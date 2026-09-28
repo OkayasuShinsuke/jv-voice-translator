@@ -1,0 +1,50 @@
+[
+  {
+    "id": "ja-work-001",
+    "language": "ja-JP",
+    "referenceTranscript": "会議は午後から始まります。資料を準備しておいてください。",
+    "referenceTranslation": "Cuộc họp sẽ bắt đầu vào buổi chiều. Vui lòng chuẩn bị sẵn tài liệu."
+  },
+  {
+    "id": "ja-work-002",
+    "language": "ja-JP",
+    "referenceTranscript": "報告書の締め切りを一日延ばしてもらえますか?",
+    "referenceTranslation": "Có thể lùi hạn nộp báo cáo thêm một ngày được không?"
+  },
+  {
+    "id": "ja-work-003",
+    "language": "ja-JP",
+    "referenceTranscript": "新しいプロジェクトについて、ご意見を聞かせてください。",
+    "referenceTranslation": "Xin hãy cho tôi biết ý kiến của anh chị về dự án mới."
+  },
+  {
+    "id": "ja-work-004",
+    "language": "ja-JP",
+    "referenceTranscript": "今日は体調が悪いので、休ませていただきます。",
+    "referenceTranslation": "Hôm nay tôi không được khỏe nên xin phép nghỉ làm."
+  },
+  {
+    "id": "vi-work-001",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi sẽ gửi email xác nhận cho khách hàng trước buổi trưa.",
+    "referenceTranslation": "昼までにお客様へ確認のメールを送ります。"
+  },
+  {
+    "id": "vi-work-002",
+    "language": "vi-VN",
+    "referenceTranscript": "Anh có thể kiểm tra lại bản hợp đồng này giúp em không?",
+    "referenceTranslation": "この契約書をもう一度確認していただけますか?"
+  },
+  {
+    "id": "vi-work-003",
+    "language": "vi-VN",
+    "referenceTranscript": "Nhà máy cần thêm ba công nhân cho ca đêm.",
+    "referenceTranslation": "工場は夜勤の作業員があと3人必要です。"
+  },
+  {
+    "id": "vi-work-004",
+    "language": "vi-VN",
+    "referenceTranscript": "Buổi phỏng vấn sẽ diễn ra trực tuyến qua Zoom.",
+    "referenceTranslation": "面接はZoomでオンラインで行われます。"
+  }
+]

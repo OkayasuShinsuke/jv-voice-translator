@@ -1,0 +1,38 @@
+[
+  {
+    "id": "ja-long-001",
+    "language": "ja-JP",
+    "referenceTranscript": "先週の日曜日、家族と一緒に京都へ行きました。朝早く出発したので、午前中に清水寺を見ることができました。お昼には湯豆腐を食べて、午後は嵐山の竹林を散歩しました。とても楽しい一日でした。",
+    "referenceTranslation": "Chủ nhật tuần trước, tôi đã cùng gia đình đi Kyoto. Vì xuất phát từ sáng sớm nên chúng tôi đã kịp tham quan chùa Kiyomizu trong buổi sáng. Buổi trưa chúng tôi ăn món đậu phụ nấu nồi, còn buổi chiều thì đi dạo trong rừng tre ở Arashiyama. Đó là một ngày rất vui."
+  },
+  {
+    "id": "ja-long-002",
+    "language": "ja-JP",
+    "referenceTranscript": "新しいスマートフォンを買いましたが、設定の方法がよく分かりません。古い端末から写真を移すにはどうすればいいですか?もし時間があれば、今晩手伝ってもらえると助かります。",
+    "referenceTranslation": "Tôi đã mua một chiếc điện thoại thông minh mới nhưng không rõ cách cài đặt lắm. Làm thế nào để chuyển ảnh từ máy cũ sang? Nếu bạn có thời gian, tối nay giúp tôi một chút thì tốt quá."
+  },
+  {
+    "id": "ja-long-003",
+    "language": "ja-JP",
+    "referenceTranscript": "来週から日本語の授業が始まります。毎週火曜日と木曜日の夜7時から9時までです。教科書は初日に配りますので、筆記用具だけ持ってきてください。",
+    "referenceTranslation": "Từ tuần sau, lớp tiếng Nhật sẽ bắt đầu. Lớp học vào tối thứ Ba và thứ Năm hằng tuần, từ 7 giờ đến 9 giờ. Sách giáo khoa sẽ được phát vào buổi học đầu tiên, nên các bạn chỉ cần mang theo đồ dùng để viết."
+  },
+  {
+    "id": "vi-long-001",
+    "language": "vi-VN",
+    "referenceTranscript": "Hà Nội vào mùa thu rất đẹp. Thời tiết mát mẻ, trời trong xanh và trên phố thoang thoảng mùi hoa sữa. Buổi sáng, nhiều người đi dạo quanh hồ Hoàn Kiếm rồi ngồi uống cà phê trên vỉa hè.",
+    "referenceTranslation": "秋のハノイはとても美しいです。気候は涼しく、空は青く澄んでいて、通りにはミルクフラワーの香りがほのかに漂います。朝には多くの人がホアンキエム湖の周りを散歩し、それから歩道に座ってコーヒーを飲みます。"
+  },
+  {
+    "id": "vi-long-002",
+    "language": "vi-VN",
+    "referenceTranscript": "Em mới sang Nhật được ba tháng nên tiếng Nhật còn kém. Ở công ty, mọi người đều rất tốt bụng và thường giúp đỡ em. Em muốn cố gắng học thật chăm để có thể nói chuyện tự nhiên với đồng nghiệp.",
+    "referenceTranslation": "日本に来てまだ3か月なので、日本語はまだ下手です。会社では皆さんがとても親切で、よく助けてくれます。同僚と自然に話せるように、一生懸命勉強したいです。"
+  },
+  {
+    "id": "vi-long-003",
+    "language": "vi-VN",
+    "referenceTranscript": "Nếu bạn đến Việt Nam vào dịp Tết, hãy thử bánh chưng. Đây là món bánh truyền thống làm từ gạo nếp, đậu xanh và thịt lợn, được gói bằng lá dong. Người Việt thường quây quần gói bánh chưng vào những ngày cuối năm.",
+    "referenceTranslation": "もしテトの時期にベトナムへ来るなら、ぜひバインチュンを食べてみてください。これはもち米、緑豆、豚肉で作る伝統的なちまきで、ドンの葉で包まれています。ベトナムの人々は年末になると、家族で集まってバインチュンを包みます。"
+  }
+]
