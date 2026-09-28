@@ -91,7 +91,7 @@ public struct MarkdownReportGenerator {
         }
         lines.append("")
         if !report.missingIDs.isEmpty {
-            lines.append("書き起こしが無く採点しなかったサンプル: \(report.missingIDs.count) 件(\(report.missingIDs.map(Self.escape).joined(separator: ", "))")
+            lines.append("書き起こしが無く採点しなかったサンプル: \(report.missingIDs.count) 件(\(report.missingIDs.map(Self.escape).joined(separator: ", ")))")
             lines.append("")
         }
         lines += latencyTable(report.latencyStats, caption: "音声認識の遅延")
