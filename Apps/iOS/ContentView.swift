@@ -12,6 +12,7 @@ struct ContentView: View {
     @State private var log: [TranslationEvent] = []
     @State private var isListening = false
     @State private var pipeline: TranslationPipeline?
+    @State private var showsVoiceSettings = false
     @State private var translator = AppleTranslator()
     @State private var jaToVi = TranslationSession.Configuration(
         source: Locale.Language(identifier: "ja"), target: Locale.Language(identifier: "vi"))
@@ -42,6 +43,10 @@ struct ContentView: View {
             }
             .padding()
             .navigationTitle("日越 翻訳")
+            .toolbar {
+                Button("声の設定", systemImage: "speaker.wave.2") { showsVoiceSettings = true }
+            }
+            .sheet(isPresented: $showsVoiceSettings) { VoiceSettingsView() }
         }
         // Apple の翻訳モデルは、初回に言語データのダウンロード確認が出る(無料)。
         .translationTask(jaToVi) { session in
@@ -63,7 +68,7 @@ struct ContentView: View {
         let pipeline = TranslationPipeline(
             recognizer: recognizer,
             translator: ChunkedTranslator(base: translator),
-            synthesizer: AppleSpeechSynthesizer())
+            synthesizer: AppleSpeechSynthesizer(profiles: VoiceSettingsStore().loadAll()))
         self.pipeline = pipeline
         isListening = true
         try? await pipeline.run { event in

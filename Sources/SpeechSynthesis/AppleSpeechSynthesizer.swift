@@ -3,18 +3,7 @@
 import AVFoundation
 import TranslatorCore
 
-/// 声A・声Bの設定。voiceIdentifier を nil にすると、その言語でいちばん高品質な声を自動で選ぶ。
-public struct VoiceProfile: Sendable, Equatable {
-    public var voiceIdentifier: String?
-    public var rate: Float
-    public var pitch: Float
-
-    public init(voiceIdentifier: String? = nil, rate: Float = AVSpeechUtteranceDefaultSpeechRate, pitch: Float = 1.0) {
-        self.voiceIdentifier = voiceIdentifier
-        self.rate = rate
-        self.pitch = pitch
-    }
-}
+// 声の設定(VoiceProfile)は VoiceProfile.swift にある。保存は VoiceSettingsStore が担当する。
 
 public final class AppleSpeechSynthesizer: NSObject, SpeechSynthesizing, AVSpeechSynthesizerDelegate, @unchecked Sendable {
     private let synthesizer = AVSpeechSynthesizer()
@@ -43,6 +32,8 @@ public final class AppleSpeechSynthesizer: NSObject, SpeechSynthesizing, AVSpeec
         utterance.rate = profile.rate
         utterance.pitchMultiplier = profile.pitch
         await withCheckedContinuation { continuation in
+            // 前の読み上げの待ちが残っていたら先に終わらせる(待ちっぱなしを防ぐ)。
+            resumeFinished()
             finished = continuation
             synthesizer.speak(utterance)
         }
