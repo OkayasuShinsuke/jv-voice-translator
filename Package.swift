@@ -14,6 +14,7 @@ let package = Package(
         .library(name: "SpeechSynthesis", targets: ["SpeechSynthesis"]),
         .library(name: "Evaluation", targets: ["Evaluation"]),
         .library(name: "CompanionLink", targets: ["CompanionLink"]),
+        .library(name: "ConversationKit", targets: ["ConversationKit"]),
     ],
     targets: [
         // 共通の約束事(プロトコル)とパイプライン。Appleのフレームワークに依存しない。
@@ -32,6 +33,8 @@ let package = Package(
         .executableTarget(name: "jv-eval", dependencies: ["Evaluation", "TranslatorCore"]),
         // Mac連携モード(Macで処理してiPhoneへ送る)
         .target(name: "CompanionLink", dependencies: ["TranslatorCore"]),
+        // ワークストリーム⑥ UI(LINE風のチャット吹き出し)。画面の見た目そのものは Apps/iOS の中で描く。
+        .target(name: "ConversationKit", dependencies: ["TranslatorCore"]),
 
         .testTarget(name: "TranslatorCoreTests", dependencies: ["TranslatorCore"]),
         .testTarget(name: "TextTranslationTests", dependencies: ["TextTranslation"]),
@@ -39,5 +42,6 @@ let package = Package(
         .testTarget(name: "CompanionLinkTests", dependencies: ["CompanionLink"]),
         .testTarget(name: "SpeechRecognitionTests", dependencies: ["SpeechRecognition"]),
         .testTarget(name: "SpeechSynthesisTests", dependencies: ["SpeechSynthesis", "TranslatorCore"]),
+        .testTarget(name: "ConversationKitTests", dependencies: ["ConversationKit"]),
     ]
 )

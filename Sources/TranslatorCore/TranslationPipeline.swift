@@ -59,8 +59,17 @@ public actor TranslationPipeline {
     }
 
     /// マイクから聞き続け、確定した文ごとに翻訳して読み上げる。
-    public func run(onEvent: @Sendable (TranslationEvent) -> Void = { _ in }) async throws {
+    ///
+    /// - Parameters:
+    ///   - onTranscript: 認識結果が出るたびに(まだ話している途中の部分結果も、確定した結果も)呼ばれる。
+    ///     画面に「今しゃべっている途中の文字」をリアルタイムに出したいとき(UI用)に使う。
+    ///   - onEvent: 翻訳(と読み上げ)が終わった確定文ごとに呼ばれる。
+    public func run(
+        onTranscript: @Sendable (Transcript) -> Void = { _ in },
+        onEvent: @Sendable (TranslationEvent) -> Void = { _ in }
+    ) async throws {
         for try await transcript in recognizer.transcripts(candidates: Language.allCases) {
+            onTranscript(transcript)
             if let event = try await handle(transcript) {
                 onEvent(event)
             }

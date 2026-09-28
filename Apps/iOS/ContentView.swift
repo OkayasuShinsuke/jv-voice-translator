@@ -4,16 +4,20 @@ import TranslatorCore
 import SpeechRecognition
 import TextTranslation
 import SpeechSynthesis
+import ConversationKit
 
-/// 最初の画面。「聞き取り開始」を押すと、話した言語を訳して読み上げる。
-/// 今は仮の画面。各ワークストリームの部品ができたら、ここで組み立てる。
+/// 最初の画面。LINEのトーク画面のように、話した言葉と訳した言葉を吹き出しで並べる。
+/// 下の丸いマイクボタンを押すと聞き取りが始まり、話すたびに吹き出しが増えていく。
 struct ContentView: View {
     @State private var language: Language = .japanese
-    @State private var log: [TranslationEvent] = []
+    /// 会話の吹き出し一覧を持つノート(ワークストリーム⑥)。
+    @State private var conversation = ConversationStore()
     @State private var isListening = false
     @State private var pipeline: TranslationPipeline?
     @State private var showsVoiceSettings = false
     @State private var translator = AppleTranslator()
+    /// タップして訳を読み上げ直すための、聞き取り用とは別の読み上げ係。
+    @State private var replaySynthesizer = AppleSpeechSynthesizer()
     /// Mac連携の状態(Mac があれば翻訳を Mac に任せる)。
     @State private var companion = CompanionStatus()
     @State private var jaToVi = TranslationSession.Configuration(
@@ -23,34 +27,21 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 16) {
-                Picker("話す言語", selection: $language) {
-                    Text("日本語 → Tiếng Việt(声A)").tag(Language.japanese)
-                    Text("Tiếng Việt → 日本語(声B)").tag(Language.vietnamese)
-                }
-                .pickerStyle(.segmented)
-
-                Label(companion.label, systemImage: companion.isConnected ? "laptopcomputer.and.iphone" : "iphone")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-
-                List(log.indices.reversed(), id: \.self) { index in
-                    VStack(alignment: .leading) {
-                        Text(log[index].source.text).font(.headline)
-                        Text(log[index].translatedText).foregroundStyle(.secondary)
-                    }
-                }
-
-                Button(isListening ? "停止" : "聞き取り開始") {
-                    Task { await toggle() }
-                }
-                .buttonStyle(.borderedProminent)
-                .controlSize(.large)
+            VStack(spacing: 0) {
+                ChatView(messages: conversation.messages, onTapMessage: replay)
+                bottomBar
             }
-            .padding()
             .navigationTitle("日越 翻訳")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                Button("声の設定", systemImage: "speaker.wave.2") { showsVoiceSettings = true }
+                ToolbarItem(placement: .principal) {
+                    Label(companion.label, systemImage: companion.isConnected ? "laptopcomputer.and.iphone" : "iphone")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("声の設定", systemImage: "speaker.wave.2") { showsVoiceSettings = true }
+                }
             }
             .sheet(isPresented: $showsVoiceSettings) { VoiceSettingsView() }
         }
@@ -64,6 +55,54 @@ struct ContentView: View {
         }
     }
 
+    /// 画面いちばん下の、言語切り替えと聞き取りボタンをまとめた場所。
+    private var bottomBar: some View {
+        VStack(spacing: 12) {
+            Picker("話す言語", selection: $language) {
+                Text("日本語 → Tiếng Việt(声A)").tag(Language.japanese)
+                Text("Tiếng Việt → 日本語(声B)").tag(Language.vietnamese)
+            }
+            .pickerStyle(.segmented)
+            .disabled(isListening)
+
+            Button {
+                Task { await toggle() }
+            } label: {
+                Image(systemName: isListening ? "mic.fill" : "mic")
+                    .font(.system(size: 30))
+                    .foregroundStyle(.white)
+                    .frame(width: 72, height: 72)
+                    .background(isListening ? Color.red : Color.green)
+                    .clipShape(Circle())
+                    // 聞き取り中は、赤い輪がふわっと広がって消える「脈打つ」ような合図を出す。
+                    .overlay {
+                        if isListening {
+                            Circle()
+                                .stroke(Color.red.opacity(0.6), lineWidth: 3)
+                                .scaleEffect(isListening ? 1.4 : 1.0)
+                                .opacity(isListening ? 0 : 1)
+                                .animation(
+                                    .easeOut(duration: 1.0).repeatForever(autoreverses: false),
+                                    value: isListening)
+                        }
+                    }
+            }
+            .accessibilityLabel(isListening ? "聞き取りを止める" : "聞き取りを始める")
+        }
+        .padding()
+        .background(.regularMaterial)
+    }
+
+    /// 完成した吹き出しをタップしたときに、その訳を読み上げ直す。
+    private func replay(_ message: ChatMessage) {
+        guard let translatedText = message.translatedText else { return }
+        replaySynthesizer.profiles = VoiceSettingsStore().loadAll()
+        Task {
+            try? await replaySynthesizer.speak(
+                translatedText, language: message.spokenLanguage.counterpart, voice: message.voice)
+        }
+    }
+
     private func toggle() async {
         if isListening {
             await pipeline?.stop()
@@ -71,6 +110,7 @@ struct ContentView: View {
             return
         }
         guard await AppleSpeechRecognizer.requestAuthorization() else { return }
+        conversation.clear()
         let recognizer = LanguageLockedRecognizer(base: AppleSpeechRecognizer(), language: language)
         let pipeline = TranslationPipeline(
             recognizer: recognizer,
@@ -78,9 +118,19 @@ struct ContentView: View {
             synthesizer: AppleSpeechSynthesizer(profiles: VoiceSettingsStore().loadAll()))
         self.pipeline = pipeline
         isListening = true
-        try? await pipeline.run { event in
-            Task { @MainActor in log.append(event) }
-        }
+        try? await pipeline.run(
+            onTranscript: { transcript in
+                Task { @MainActor in
+                    if transcript.isFinal {
+                        conversation.finalize(transcript)
+                    } else {
+                        conversation.updatePartial(transcript)
+                    }
+                }
+            },
+            onEvent: { event in
+                Task { @MainActor in conversation.complete(with: event) }
+            })
         isListening = false
     }
 }
