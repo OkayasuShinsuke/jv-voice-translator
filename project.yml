@@ -4,7 +4,7 @@ name: JVTranslator
 options:
   bundleIdPrefix: com.okayasushinsuke
   deploymentTarget:
-    iOS: "18.0"
+    iOS: "27.0"
     macOS: "15.0"
 packages:
   JVTranslator:

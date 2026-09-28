@@ -3,14 +3,22 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: ["**"]  # どのブランチにプッシュしてもテストする
   pull_request:
 
 jobs:
   test:
-    runs-on: macos-15
+    # iOS 27 用のアプリを作るには Xcode 27 が必要。新しい Mac の実行環境を使う。
+    runs-on: macos-26
     steps:
       - uses: actions/checkout@v4
+      - name: Xcode 27 を選ぶ
+        run: |
+          ls -d /Applications/Xcode*.app
+          XCODE=$(ls -d /Applications/Xcode_27*.app 2>/dev/null | sort -V | tail -1)
+          if [ -z "$XCODE" ]; then echo "::error::Xcode 27 がこの実行環境に見つかりません"; exit 1; fi
+          sudo xcode-select -s "$XCODE"
+          xcodebuild -version
       - name: Swift パッケージのテスト
         run: swift test
       - name: XcodeGen を入れる
