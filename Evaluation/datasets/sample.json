@@ -1,0 +1,14 @@
+[
+  {
+    "id": "ja-greeting-001",
+    "language": "ja-JP",
+    "referenceTranscript": "はじめまして。よろしくお願いします。",
+    "referenceTranslation": "Rất vui được gặp bạn. Mong được bạn giúp đỡ."
+  },
+  {
+    "id": "vi-greeting-001",
+    "language": "vi-VN",
+    "referenceTranscript": "Xin chào, hôm nay bạn khỏe không?",
+    "referenceTranslation": "こんにちは、今日はお元気ですか?"
+  }
+]

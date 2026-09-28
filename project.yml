@@ -1,0 +1,49 @@
+# XcodeGen の設定ファイル。`xcodegen generate` で Xcode プロジェクト(.xcodeproj)を作る。
+# .xcodeproj を直接Gitに入れないのは、複数人・複数エージェントで同時に編集すると衝突しやすいため。
+name: JVTranslator
+options:
+  bundleIdPrefix: com.okayasushinsuke
+  deploymentTarget:
+    iOS: "18.0"
+    macOS: "15.0"
+packages:
+  JVTranslator:
+    path: .
+targets:
+  JVTranslator:
+    type: application
+    platform: iOS
+    sources: [Apps/iOS]
+    dependencies:
+      - package: JVTranslator
+        product: TranslatorCore
+      - package: JVTranslator
+        product: SpeechRecognition
+      - package: JVTranslator
+        product: TextTranslation
+      - package: JVTranslator
+        product: SpeechSynthesis
+      - package: JVTranslator
+        product: CompanionLink
+    info:
+      path: Apps/iOS/Info.plist
+      properties:
+        CFBundleDisplayName: 日越翻訳
+        UILaunchScreen: {}
+        NSMicrophoneUsageDescription: 話した言葉を聞き取って翻訳するためにマイクを使います。
+        NSSpeechRecognitionUsageDescription: 話した言葉を文字にするために音声認識を使います。
+        NSLocalNetworkUsageDescription: Mac連携モードで同じWi-FiのMacとつなぐために使います。
+        NSBonjourServices: [_jvtranslate._tcp]
+  JVTranslatorCompanion:
+    type: application
+    platform: macOS
+    sources: [Apps/macOS]
+    dependencies:
+      - package: JVTranslator
+        product: CompanionLink
+    info:
+      path: Apps/macOS/Info.plist
+      properties:
+        NSMicrophoneUsageDescription: Mac のマイクで聞き取る場合に使います。
+        NSLocalNetworkUsageDescription: 同じWi-FiのiPhoneとつなぐために使います。
+        NSBonjourServices: [_jvtranslate._tcp]

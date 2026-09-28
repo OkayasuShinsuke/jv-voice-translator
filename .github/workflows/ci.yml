@@ -1,0 +1,33 @@
+# プッシュやプルリクエストのたびに、GitHub の Mac 上で自動でビルドとテストを行う。
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Swift パッケージのテスト
+        run: swift test
+      - name: XcodeGen を入れる
+        run: brew install xcodegen
+      - name: Xcode プロジェクトを生成
+        run: xcodegen generate
+      - name: iOS アプリをビルド(シミュレータ向け・署名なし)
+        run: |
+          xcodebuild build \
+            -project JVTranslator.xcodeproj \
+            -scheme JVTranslator \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO
+      - name: Mac コンパニオンアプリをビルド(署名なし)
+        run: |
+          xcodebuild build \
+            -project JVTranslator.xcodeproj \
+            -scheme JVTranslatorCompanion \
+            -destination 'platform=macOS' \
+            CODE_SIGNING_ALLOWED=NO

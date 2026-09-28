@@ -1,0 +1,8 @@
+.DS_Store
+.build/
+.swiftpm/
+DerivedData/
+*.xcodeproj
+xcuserdata/
+Apps/iOS/Info.plist
+Apps/macOS/Info.plist
