@@ -13,6 +13,8 @@ struct ContentView: View {
     @State private var isListening = false
     @State private var pipeline: TranslationPipeline?
     @State private var translator = AppleTranslator()
+    /// Mac連携の状態(Mac があれば翻訳を Mac に任せる)。
+    @State private var companion = CompanionStatus()
     @State private var jaToVi = TranslationSession.Configuration(
         source: Locale.Language(identifier: "ja"), target: Locale.Language(identifier: "vi"))
     @State private var viToJa = TranslationSession.Configuration(
@@ -26,6 +28,10 @@ struct ContentView: View {
                     Text("Tiếng Việt → 日本語(声B)").tag(Language.vietnamese)
                 }
                 .pickerStyle(.segmented)
+
+                Label(companion.label, systemImage: companion.isConnected ? "laptopcomputer.and.iphone" : "iphone")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
 
                 List(log.indices.reversed(), id: \.self) { index in
                     VStack(alignment: .leading) {
@@ -43,6 +49,7 @@ struct ContentView: View {
             .padding()
             .navigationTitle("日越 翻訳")
         }
+        .task { companion.start() }
         // Apple の翻訳モデルは、初回に言語データのダウンロード確認が出る(無料)。
         .translationTask(jaToVi) { session in
             translator.register(session, from: .japanese, to: .vietnamese)
@@ -62,7 +69,7 @@ struct ContentView: View {
         let recognizer = LanguageLockedRecognizer(base: AppleSpeechRecognizer(), language: language)
         let pipeline = TranslationPipeline(
             recognizer: recognizer,
-            translator: ChunkedTranslator(base: translator),
+            translator: ChunkedTranslator(base: companion.makeTranslator(local: translator)),
             synthesizer: AppleSpeechSynthesizer())
         self.pipeline = pipeline
         isListening = true

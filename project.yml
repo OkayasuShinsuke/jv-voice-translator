@@ -40,6 +40,10 @@ targets:
     sources: [Apps/macOS]
     dependencies:
       - package: JVTranslator
+        product: TranslatorCore
+      - package: JVTranslator
+        product: TextTranslation
+      - package: JVTranslator
         product: CompanionLink
     info:
       path: Apps/macOS/Info.plist
