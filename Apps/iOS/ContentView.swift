@@ -6,10 +6,30 @@ import TextTranslation
 import SpeechSynthesis
 import ConversationKit
 
+/// 聞き取りの言語モード。
+///
+/// たとえ話:通訳さんに「日本語だけ聞いて」「ベトナム語だけ聞いて」と指定する代わりに、
+/// 「どちらの言語で話しても自動で聞き分けて」とお願いできるのが `automatic`。
+enum RecognitionMode: String, CaseIterable, Hashable, Identifiable {
+    case automatic
+    case japanese
+    case vietnamese
+
+    var id: String { rawValue }
+
+    var label: String {
+        switch self {
+        case .automatic: return "自動"
+        case .japanese: return "日本語"
+        case .vietnamese: return "Tiếng Việt"
+        }
+    }
+}
+
 /// 最初の画面。LINEのトーク画面のように、話した言葉と訳した言葉を吹き出しで並べる。
 /// 下の丸いマイクボタンを押すと聞き取りが始まり、話すたびに吹き出しが増えていく。
 struct ContentView: View {
-    @State private var language: Language = .japanese
+    @State private var mode: RecognitionMode = .automatic
     /// 会話の吹き出し一覧を持つノート(ワークストリーム⑥)。
     @State private var conversation = ConversationStore()
     @State private var isListening = false
@@ -20,6 +40,8 @@ struct ContentView: View {
     @State private var replaySynthesizer = AppleSpeechSynthesizer()
     /// Mac連携の状態(Mac があれば翻訳を Mac に任せる)。
     @State private var companion = CompanionStatus()
+    /// 翻訳データ(日⇔越)が端末にダウンロード済みかどうかの報告。nil の間はまだ調べている最中。
+    @State private var availability: LanguageAvailabilityReport?
     @State private var jaToVi = TranslationSession.Configuration(
         source: Locale.Language(identifier: "ja"), target: Locale.Language(identifier: "vi"))
     @State private var viToJa = TranslationSession.Configuration(
@@ -28,6 +50,9 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
+                if let availability, !availability.isReady {
+                    AvailabilityBanner(report: availability)
+                }
                 ChatView(messages: conversation.messages, onTapMessage: replay)
                 bottomBar
             }
@@ -46,6 +71,7 @@ struct ContentView: View {
             .sheet(isPresented: $showsVoiceSettings) { VoiceSettingsView() }
         }
         .task { companion.start() }
+        .task { availability = await LanguageAvailabilityReport.check(using: AppleLanguageAvailabilityChecker()) }
         // Apple の翻訳モデルは、初回に言語データのダウンロード確認が出る(無料)。
         .translationTask(jaToVi) { session in
             translator.register(session, from: .japanese, to: .vietnamese)
@@ -58,9 +84,10 @@ struct ContentView: View {
     /// 画面いちばん下の、言語切り替えと聞き取りボタンをまとめた場所。
     private var bottomBar: some View {
         VStack(spacing: 12) {
-            Picker("話す言語", selection: $language) {
-                Text("日本語 → Tiếng Việt(声A)").tag(Language.japanese)
-                Text("Tiếng Việt → 日本語(声B)").tag(Language.vietnamese)
+            Picker("聞き取る言語", selection: $mode) {
+                ForEach(RecognitionMode.allCases) { mode in
+                    Text(mode.label).tag(mode)
+                }
             }
             .pickerStyle(.segmented)
             .disabled(isListening)
@@ -111,7 +138,7 @@ struct ContentView: View {
         }
         guard await AppleSpeechRecognizer.requestAuthorization() else { return }
         conversation.clear()
-        let recognizer = LanguageLockedRecognizer(base: AppleSpeechRecognizer(), language: language)
+        let recognizer = makeRecognizer(for: mode)
         let pipeline = TranslationPipeline(
             recognizer: recognizer,
             translator: ChunkedTranslator(base: companion.makeTranslator(local: translator)),
@@ -128,14 +155,30 @@ struct ContentView: View {
                     }
                 }
             },
+            onTranslationChunk: { chunkSoFar in
+                // 1文目の翻訳ができた時点で、吹き出しの訳の部分をその場で書き換える。
+                Task { @MainActor in conversation.updateTranslationProgress(chunkSoFar) }
+            },
             onEvent: { event in
                 Task { @MainActor in conversation.complete(with: event) }
             })
         isListening = false
     }
+
+    /// 選んだモードに応じて、聞き取り役(自動判定 or 固定言語)を作る。
+    private func makeRecognizer(for mode: RecognitionMode) -> SpeechRecognizing {
+        switch mode {
+        case .automatic:
+            return AutoLanguageRecognizer()
+        case .japanese:
+            return LanguageLockedRecognizer(base: AppleSpeechRecognizer(), language: .japanese)
+        case .vietnamese:
+            return LanguageLockedRecognizer(base: AppleSpeechRecognizer(), language: .vietnamese)
+        }
+    }
 }
 
-/// 画面で選んだ言語で聞き取らせるための小さな包み紙。自動言語判定ができたら不要になる。
+/// 画面で選んだ言語だけで聞き取らせるための小さな包み紙。
 struct LanguageLockedRecognizer: SpeechRecognizing {
     let base: SpeechRecognizing
     let language: Language

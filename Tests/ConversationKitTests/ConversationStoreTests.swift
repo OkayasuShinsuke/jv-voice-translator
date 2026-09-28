@@ -87,4 +87,34 @@ final class ConversationStoreTests: XCTestCase {
         store.clear()
         XCTAssertTrue(store.messages.isEmpty)
     }
+
+    func testUpdateTranslationProgressFillsInTranslatedTextWhileTranslating() {
+        var store = ConversationStore()
+        store.finalize(Transcript(text: "こんにちは", language: .japanese, isFinal: true))
+
+        // 1文目ができた時点で呼ばれる。
+        store.updateTranslationProgress("Xin")
+        XCTAssertEqual(store.messages.count, 1)
+        XCTAssertEqual(store.messages[0].translatedText, "Xin")
+        XCTAssertEqual(store.messages[0].state, .translating)
+
+        // 2文目までつながった状態で、また呼ばれる。
+        store.updateTranslationProgress("Xin chào")
+        XCTAssertEqual(store.messages[0].translatedText, "Xin chào")
+        XCTAssertEqual(store.messages[0].state, .translating)
+
+        // 最後に complete が来たら、通常どおり .done になる。
+        let event = TranslationEvent(
+            source: Transcript(text: "こんにちは", language: .japanese, isFinal: true),
+            translatedText: "Xin chào bạn", voice: .a, translationLatency: 0.1)
+        store.complete(with: event)
+        XCTAssertEqual(store.messages[0].translatedText, "Xin chào bạn")
+        XCTAssertEqual(store.messages[0].state, .done)
+    }
+
+    func testUpdateTranslationProgressDoesNothingWithoutInProgressBubble() {
+        var store = ConversationStore()
+        store.updateTranslationProgress("Xin")
+        XCTAssertTrue(store.messages.isEmpty)
+    }
 }

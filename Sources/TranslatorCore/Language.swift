@@ -17,6 +17,11 @@ public enum Language: String, Codable, Sendable, CaseIterable {
     public var languageCode: String {
         String(rawValue.prefix(2))
     }
+
+    /// 文を1つにつなげるときの区切り。日本語は詰めて書き、ベトナム語は単語の間に空白が要るので空白でつなぐ。
+    public var sentenceJoiner: String {
+        self == .japanese ? "" : " "
+    }
 }
 
 /// 読み上げに使う声。

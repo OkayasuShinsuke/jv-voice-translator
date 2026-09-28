@@ -23,6 +23,9 @@ public actor TranslationPipeline {
     private let translator: Translating
     private let synthesizer: SpeechSynthesizing
     private let detector: LanguageDetecting?
+    /// 翻訳・読み上げの最中かどうか。true の間にマイクが拾った音(自分の読み上げ自身など)は、
+    /// 会話に新しい吹き出しとして混ざらないよう `run` が無視する。
+    private var isHandling = false
 
     public init(
         recognizer: SpeechRecognizing,
@@ -37,8 +40,14 @@ public actor TranslationPipeline {
     }
 
     /// 確定した1文を処理する。テストしやすいよう、ストリームとは分けてある。
+    ///
+    /// - Parameter onChunk: 翻訳が文ごとに進むたびに、その時点までの訳文(つながった状態)を渡す。
+    ///   渡した翻訳器が `StreamingTranslating` に対応していない場合は、全文が訳し終わった時点で1回だけ呼ばれる。
     @discardableResult
-    public func handle(_ transcript: Transcript) async throws -> TranslationEvent? {
+    public func handle(
+        _ transcript: Transcript,
+        onChunk: @Sendable (String) -> Void = { _ in }
+    ) async throws -> TranslationEvent? {
         let text = transcript.text.trimmingCharacters(in: .whitespacesAndNewlines)
         guard transcript.isFinal, !text.isEmpty else { return nil }
 
@@ -47,10 +56,16 @@ public actor TranslationPipeline {
         let voice = VoiceRole.forSpoken(spoken)
 
         let start = Date()
-        let translated = try await translator.translate(text, from: spoken, to: target)
+        let translated: String
+        if let streaming = translator as? StreamingTranslating {
+            // 1文ずつ訳せた順に読み上げる。長文でも「全部訳し終わるまで無言」にならない。
+            translated = try await speakAsTranslated(streaming, text: text, from: spoken, to: target, voice: voice, onChunk: onChunk)
+        } else {
+            translated = try await translator.translate(text, from: spoken, to: target)
+            onChunk(translated)
+            try await synthesizer.speak(translated, language: target, voice: voice)
+        }
         let latency = Date().timeIntervalSince(start)
-
-        try await synthesizer.speak(translated, language: target, voice: voice)
 
         var source = transcript
         source.text = text
@@ -58,19 +73,45 @@ public actor TranslationPipeline {
         return TranslationEvent(source: source, translatedText: translated, voice: voice, translationLatency: latency)
     }
 
+    /// ストリーム翻訳器から1文ずつ受け取り、届いた順に読み上げながら全体をつなげていく。
+    private func speakAsTranslated(
+        _ translator: StreamingTranslating,
+        text: String,
+        from source: Language,
+        to target: Language,
+        voice: VoiceRole,
+        onChunk: @Sendable (String) -> Void
+    ) async throws -> String {
+        var joined = ""
+        for try await sentence in translator.translateStream(text, from: source, to: target) {
+            joined = joined.isEmpty ? sentence : joined + target.sentenceJoiner + sentence
+            onChunk(joined)
+            try await synthesizer.speak(sentence, language: target, voice: voice)
+        }
+        return joined
+    }
+
     /// マイクから聞き続け、確定した文ごとに翻訳して読み上げる。
     ///
     /// - Parameters:
     ///   - onTranscript: 認識結果が出るたびに(まだ話している途中の部分結果も、確定した結果も)呼ばれる。
     ///     画面に「今しゃべっている途中の文字」をリアルタイムに出したいとき(UI用)に使う。
+    ///   - onTranslationChunk: 確定した文の翻訳が進むたびに、その時点までの訳文を渡す。1文目ができた時点で呼ばれる。
     ///   - onEvent: 翻訳(と読み上げ)が終わった確定文ごとに呼ばれる。
     public func run(
         onTranscript: @Sendable (Transcript) -> Void = { _ in },
+        onTranslationChunk: @Sendable (String) -> Void = { _ in },
         onEvent: @Sendable (TranslationEvent) -> Void = { _ in }
     ) async throws {
         for try await transcript in recognizer.transcripts(candidates: Language.allCases) {
+            // 翻訳・読み上げの最中に届いた音(自分の声が返ってきたもの等)は、次の話として扱わない。
+            if isHandling { continue }
             onTranscript(transcript)
-            if let event = try await handle(transcript) {
+            guard transcript.isFinal else { continue }
+
+            isHandling = true
+            defer { isHandling = false }
+            if let event = try await handle(transcript, onChunk: onTranslationChunk) {
                 onEvent(event)
             }
         }

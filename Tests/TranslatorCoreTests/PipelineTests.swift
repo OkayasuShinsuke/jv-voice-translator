@@ -97,4 +97,89 @@ final class PipelineTests: XCTestCase {
         XCTAssertEqual(detector.detect("Tôi là người Việt"), .vietnamese)
         XCTAssertNil(detector.detect("123"))
     }
+
+    func testStreamingTranslatorSpeaksEachSentenceAsItArrivesAndJoinsChunks() async throws {
+        let synth = RecordingSynthesizer()
+        let pipeline = TranslationPipeline(
+            recognizer: SilentRecognizer(), translator: FakeStreamingTranslator(), synthesizer: synth)
+        let collector = TranscriptCollector()
+        let event = try await pipeline.handle(
+            Transcript(text: "あ。い。", language: .japanese, isFinal: true),
+            onChunk: { collector.texts.append($0) })
+
+        // 文ごとに2回、読み上げが呼ばれている(1文目ができた時点で読み上げを始められる)。
+        let spoken = await synth.spoken
+        XCTAssertEqual(spoken.map(\.0), ["[vi]あ。", "[vi]い。"])
+        // onChunk には「今までにつながった訳」が段階的に渡される。
+        XCTAssertEqual(collector.texts, ["[vi]あ。", "[vi]あ。 [vi]い。"])
+        XCTAssertEqual(event?.translatedText, "[vi]あ。 [vi]い。")
+    }
+
+    func testRunIgnoresTranscriptsThatArriveWhileHandlingAPreviousOne() async throws {
+        let synth = RecordingSynthesizer()
+        // 1文目を処理している間(SlowTranslatorがわざと少し待つ間)に、2文目が届く状況を再現する。
+        let recognizer = ScriptedRecognizer(events: [
+            (Transcript(text: "こんにちは", language: .japanese, isFinal: true), 0),
+            (Transcript(text: "ただいま(自分の声が返ってきたもの)", language: .japanese, isFinal: true), 0.05),
+        ])
+        let pipeline = TranslationPipeline(recognizer: recognizer, translator: SlowTranslator(delay: 0.2), synthesizer: synth)
+        let events = EventCollector()
+        try await pipeline.run(onEvent: { events.items.append($0) })
+
+        // 2文目は1文目の処理中に届いたので無視され、確定イベントは1回だけになる。
+        XCTAssertEqual(events.items.count, 1)
+        XCTAssertEqual(events.items.first?.source.text, "こんにちは")
+    }
+}
+
+/// 文ごとに訳し、1文ずつ流す偽物のストリーム翻訳器。
+struct FakeStreamingTranslator: StreamingTranslating {
+    func translate(_ text: String, from source: Language, to target: Language) async throws -> String {
+        "[\(target.languageCode)]\(text)"
+    }
+
+    func translateStream(_ text: String, from source: Language, to target: Language) -> AsyncThrowingStream<String, Error> {
+        let sentences = text.split(separator: "。").map { "\($0)。" }
+        return AsyncThrowingStream { continuation in
+            for sentence in sentences {
+                continuation.yield("[\(target.languageCode)]\(sentence)")
+            }
+            continuation.finish()
+        }
+    }
+}
+
+/// 訳すのにわざと時間がかかる偽物の翻訳器。echo(自分の声の拾い直し)を再現するテスト専用。
+struct SlowTranslator: Translating {
+    let delay: TimeInterval
+    func translate(_ text: String, from source: Language, to target: Language) async throws -> String {
+        try await Task.sleep(nanoseconds: UInt64(delay * 1_000_000_000))
+        return "[\(target.languageCode)]\(text)"
+    }
+}
+
+/// 決まった時間差でイベントを流す偽物の認識器。テストで「処理中に次が届く」状況を再現するために使う。
+struct ScriptedRecognizer: SpeechRecognizing {
+    let events: [(Transcript, TimeInterval)]
+
+    func transcripts(candidates: [Language]) -> AsyncThrowingStream<Transcript, Error> {
+        AsyncThrowingStream { continuation in
+            Task {
+                for (transcript, delay) in events {
+                    if delay > 0 {
+                        try? await Task.sleep(nanoseconds: UInt64(delay * 1_000_000_000))
+                    }
+                    continuation.yield(transcript)
+                }
+                continuation.finish()
+            }
+        }
+    }
+
+    func stop() async {}
+}
+
+/// テストの中だけで使う、確定イベントを集めるための箱(TranscriptCollector と同じ理由で @unchecked Sendable)。
+final class EventCollector: @unchecked Sendable {
+    var items: [TranslationEvent] = []
 }

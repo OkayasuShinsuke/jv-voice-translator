@@ -66,6 +66,14 @@ public struct ConversationStore: Sendable, Equatable {
         }
     }
 
+    /// 翻訳が文ごとに進んでいる途中で呼ぶ(1文目ができた時点など)。
+    /// 「翻訳中」の吹き出しの訳の部分だけを、その時点までのつながった訳で書き換える。
+    /// 今「翻訳中」の吹き出しが無ければ何もしない(finalize より前に呼ばれた等、想定外の順番を無視する)。
+    public mutating func updateTranslationProgress(_ translatedTextSoFar: String) {
+        guard let index = indexOfInProgress() else { return }
+        messages[index].translatedText = translatedTextSoFar
+    }
+
     /// 翻訳が終わったときに呼ぶ。今「話している途中・翻訳中」の吹き出しがあればそれを完成させ、
     /// 無ければ(部分結果を経ずにいきなり結果が来た場合)新しい吹き出しを追加する。
     public mutating func complete(with event: TranslationEvent) {
