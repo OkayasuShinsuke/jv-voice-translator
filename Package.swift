@@ -6,7 +6,7 @@ let package = Package(
     name: "JVTranslator",
     defaultLocalization: "ja",
     // swift-tools-version 5.9 には .v18 などの名前がないので、文字列で版を指定する。
-    platforms: [.iOS("18.0"), .macOS("15.0")],
+    platforms: [.iOS("26.0"), .macOS("15.0")],
     products: [
         .library(name: "TranslatorCore", targets: ["TranslatorCore"]),
         .library(name: "SpeechRecognition", targets: ["SpeechRecognition"]),

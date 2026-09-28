@@ -3,14 +3,21 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: ["**"]  # どのブランチにプッシュしてもテストする
   pull_request:
 
 jobs:
   test:
-    runs-on: macos-15
+    # macos-26 の実行環境には Xcode 26 系が入っている。いちばん新しいものを使う。
+    # (2026年9月時点で GitHub には Xcode 27 がまだ無い。入ったら 27 に切り替える)
+    runs-on: macos-26
     steps:
       - uses: actions/checkout@v4
+      - name: いちばん新しい Xcode を選ぶ
+        run: |
+          XCODE=$(ls -d /Applications/Xcode_*.app | sort -V | tail -1)
+          sudo xcode-select -s "$XCODE"
+          xcodebuild -version
       - name: Swift パッケージのテスト
         run: swift test
       - name: XcodeGen を入れる

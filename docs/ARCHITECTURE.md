@@ -39,7 +39,7 @@
 
 | 工程 | iPhone 単体(基本) | Mac 連携モード(候補) |
 |---|---|---|
-| ① 音声認識 | Speech フレームワーク(`SFSpeechRecognizer`、iOS 26 以降は `SpeechAnalyzer` も候補) | WhisperKit(オープンソース・無料)で高精度認識 |
+| ① 音声認識 | Speech フレームワーク(iOS 26 以降が対象なので新しい `SpeechAnalyzer` が第一候補、`SFSpeechRecognizer` は比較用) | WhisperKit(オープンソース・無料)で高精度認識 |
 | ② 翻訳 | Translation フレームワーク(端末内・無料、初回に言語データをダウンロード) | Mac 側の Translation フレームワーク、または無料のローカル翻訳モデル |
 | ③ 音声合成 | `AVSpeechSynthesizer`(Premium/Enhanced 音声を無料で追加可能) | Mac の高品質音声で合成して音声ファイルを返す |
 | 言語判定 | 文字種判定 + `NLLanguageRecognizer` | 同左、または Whisper の言語判定 |
