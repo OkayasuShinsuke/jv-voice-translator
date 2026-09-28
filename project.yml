@@ -25,6 +25,8 @@ targets:
         product: SpeechSynthesis
       - package: JVTranslator
         product: CompanionLink
+      - package: JVTranslator
+        product: ConversationKit
     info:
       path: Apps/iOS/Info.plist
       properties:

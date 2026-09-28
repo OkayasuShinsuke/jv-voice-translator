@@ -21,6 +21,7 @@ Sources/
   SpeechSynthesis/       ③ 自然な音声合成(声A/声B)
   Evaluation/            ④ 正確性の評価(CER/WER/chrF・遅延)
   CompanionLink/         Mac 連携モードの通信
+  ConversationKit/       ⑥ 会話の吹き出しデータ(LINE風チャット画面のもと)
 Tests/                   自動テスト
 Apps/iOS/                iPhone アプリ本体(画面)
 Apps/macOS/              Mac コンパニオンアプリ
