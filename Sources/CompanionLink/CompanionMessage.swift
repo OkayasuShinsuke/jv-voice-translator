@@ -50,6 +50,7 @@ public protocol CompanionTransport: Sendable {
 }
 
 /// Mac に翻訳を任せる Translating 実装。iPhone側から見ると普通の翻訳器と同じに見える。
+/// 「翻訳お願い」の手紙に番号(id)を書いて送り、同じ番号の返事が来たら待っている人に渡す仕組み。
 public actor RemoteTranslator: Translating {
     private let transport: CompanionTransport
     private var pending: [String: CheckedContinuation<String, Error>] = [:]
@@ -77,18 +78,31 @@ public actor RemoteTranslator: Translating {
     private func startListeningIfNeeded() {
         guard !listening else { return }
         listening = true
+        // 返事の受け取り口は、依頼を送る「前に」その場で開いておく。
+        // (後から開くと、とても速い返事を取りこぼすことがあるため)
+        let stream = transport.messages()
         Task {
+            var endError: Error = CompanionError.disconnected
             do {
-                for try await message in transport.messages() {
+                for try await message in stream {
                     if case let .translation(id, text, _, _) = message {
                         pending.removeValue(forKey: id)?.resume(returning: text)
                     }
                 }
             } catch {
-                for continuation in pending.values { continuation.resume(throwing: error) }
-                pending.removeAll()
+                endError = error
             }
+            // 通信が終わった(切れた)ら、待っている人全員に「失敗」を伝える。
+            // 次の translate でまた受け取り口を開き直せるよう listening を戻す。
+            finishAll(error: endError)
         }
+    }
+
+    private func finishAll(error: Error) {
+        let waiting = pending
+        pending.removeAll()
+        listening = false
+        for continuation in waiting.values { continuation.resume(throwing: error) }
     }
 
     private func fail(id: String, error: Error) {
