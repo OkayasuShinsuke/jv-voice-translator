@@ -105,9 +105,9 @@ public actor TranslationPipeline {
     /// 結局その手紙も読んでしまう。それを防ぐため、1通ごとの処理(`handle`)は裏の作業として並行に
     /// 走らせ、受け取る係(このループ)はマイクの手紙受け取りに専念する。
     public func run(
-        onTranscript: @Sendable (Transcript) -> Void = { _ in },
-        onTranslationChunk: @Sendable (String) -> Void = { _ in },
-        onEvent: @Sendable (TranslationEvent) -> Void = { _ in }
+        onTranscript: @escaping @Sendable (Transcript) -> Void = { _ in },
+        onTranslationChunk: @escaping @Sendable (String) -> Void = { _ in },
+        onEvent: @escaping @Sendable (TranslationEvent) -> Void = { _ in }
     ) async throws {
         var pendingHandling: [Task<Void, Never>] = []
         for try await transcript in recognizer.transcripts(candidates: Language.allCases) {
