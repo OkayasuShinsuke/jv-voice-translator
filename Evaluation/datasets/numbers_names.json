@@ -1,0 +1,62 @@
+[
+  {
+    "id": "ja-num-001",
+    "language": "ja-JP",
+    "referenceTranscript": "2026年10月15日の午後3時に、東京駅で会いましょう。",
+    "referenceTranslation": "Chúng ta hãy gặp nhau ở ga Tokyo lúc 3 giờ chiều ngày 15 tháng 10 năm 2026."
+  },
+  {
+    "id": "ja-num-002",
+    "language": "ja-JP",
+    "referenceTranscript": "このシャツは1枚2500円です。",
+    "referenceTranslation": "Chiếc áo sơ mi này giá 2.500 yên."
+  },
+  {
+    "id": "ja-num-003",
+    "language": "ja-JP",
+    "referenceTranscript": "私の電話番号は090-1234-5678です。",
+    "referenceTranslation": "Số điện thoại của tôi là 090-1234-5678."
+  },
+  {
+    "id": "ja-num-004",
+    "language": "ja-JP",
+    "referenceTranscript": "山田さんは来月、大阪からハノイに引っ越します。",
+    "referenceTranslation": "Tháng sau anh Yamada sẽ chuyển từ Osaka đến Hà Nội."
+  },
+  {
+    "id": "ja-num-005",
+    "language": "ja-JP",
+    "referenceTranscript": "飛行機は朝8時30分に成田空港を出発します。",
+    "referenceTranslation": "Máy bay sẽ cất cánh từ sân bay Narita lúc 8 giờ 30 sáng."
+  },
+  {
+    "id": "vi-num-001",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi sinh ngày 2 tháng 9 năm 1995 tại Đà Nẵng.",
+    "referenceTranslation": "私は1995年9月2日にダナンで生まれました。"
+  },
+  {
+    "id": "vi-num-002",
+    "language": "vi-VN",
+    "referenceTranscript": "Tổng cộng là 350.000 đồng, anh trả bằng tiền mặt hay thẻ?",
+    "referenceTranslation": "合計で35万ドンです。お支払いは現金ですか、それともカードですか?"
+  },
+  {
+    "id": "vi-num-003",
+    "language": "vi-VN",
+    "referenceTranscript": "Chị Nguyễn Thị Lan làm việc ở Thành phố Hồ Chí Minh.",
+    "referenceTranslation": "グエン・ティ・ランさんはホーチミン市で働いています。"
+  },
+  {
+    "id": "vi-num-004",
+    "language": "vi-VN",
+    "referenceTranscript": "Chuyến tàu SE1 khởi hành lúc 19 giờ 20 phút.",
+    "referenceTranslation": "SE1列車は19時20分に出発します。"
+  },
+  {
+    "id": "vi-num-005",
+    "language": "vi-VN",
+    "referenceTranscript": "Căn hộ của tôi ở tầng 12, phòng số 1205.",
+    "referenceTranslation": "私のアパートは12階の1205号室です。"
+  }
+]

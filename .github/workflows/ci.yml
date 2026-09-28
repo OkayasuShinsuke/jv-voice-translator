@@ -20,6 +20,14 @@ jobs:
           xcodebuild -version
       - name: Swift パッケージのテスト
         run: swift test
+      - name: 評価を実行してレポートを保存(ワークストリーム④)
+        run: |
+          swift run jv-eval --dataset Evaluation/datasets --out eval-report.md --translator identity
+          cat eval-report.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: eval-report
+          path: eval-report.md
       - name: XcodeGen を入れる
         run: brew install xcodegen
       - name: Xcode プロジェクトを生成

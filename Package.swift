@@ -28,6 +28,8 @@ let package = Package(
         .target(name: "SpeechSynthesis", dependencies: ["TranslatorCore"]),
         // ワークストリーム④ 正確性の評価(WER/CER/chrF と遅延)
         .target(name: "Evaluation", dependencies: ["TranslatorCore"]),
+        // 評価をコマンドで回す道具(`swift run jv-eval`)。CI でレポートを作るのに使う。
+        .executableTarget(name: "jv-eval", dependencies: ["Evaluation", "TranslatorCore"]),
         // Mac連携モード(Macで処理してiPhoneへ送る)
         .target(name: "CompanionLink", dependencies: ["TranslatorCore"]),
 

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "ja-travel-001",
+    "language": "ja-JP",
+    "referenceTranscript": "駅はどこですか?ここから歩いて行けますか?",
+    "referenceTranslation": "Nhà ga ở đâu vậy? Từ đây có thể đi bộ đến đó được không?"
+  },
+  {
+    "id": "ja-travel-002",
+    "language": "ja-JP",
+    "referenceTranscript": "チェックインをお願いします。田中の名前で予約しています。",
+    "referenceTranslation": "Tôi muốn nhận phòng. Tôi đã đặt phòng dưới tên Tanaka."
+  },
+  {
+    "id": "ja-travel-003",
+    "language": "ja-JP",
+    "referenceTranscript": "空港までタクシーでいくらかかりますか?",
+    "referenceTranslation": "Đi taxi đến sân bay hết bao nhiêu tiền?"
+  },
+  {
+    "id": "ja-travel-004",
+    "language": "ja-JP",
+    "referenceTranscript": "辛くない料理はありますか?",
+    "referenceTranslation": "Có món nào không cay không?"
+  },
+  {
+    "id": "ja-travel-005",
+    "language": "ja-JP",
+    "referenceTranscript": "この近くにおすすめのレストランはありますか?",
+    "referenceTranslation": "Gần đây có nhà hàng nào bạn giới thiệu không?"
+  },
+  {
+    "id": "vi-travel-001",
+    "language": "vi-VN",
+    "referenceTranscript": "Cho tôi hỏi, bến xe buýt gần nhất ở đâu?",
+    "referenceTranslation": "すみません、いちばん近いバス停はどこですか?"
+  },
+  {
+    "id": "vi-travel-002",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi muốn đổi đô la sang yên Nhật.",
+    "referenceTranslation": "ドルを日本円に両替したいです。"
+  },
+  {
+    "id": "vi-travel-003",
+    "language": "vi-VN",
+    "referenceTranscript": "Phòng này có cửa sổ nhìn ra biển không?",
+    "referenceTranslation": "この部屋には海が見える窓がありますか?"
+  },
+  {
+    "id": "vi-travel-004",
+    "language": "vi-VN",
+    "referenceTranscript": "Làm ơn cho tôi hai vé đi Hội An.",
+    "referenceTranslation": "ホイアン行きの切符を2枚ください。"
+  },
+  {
+    "id": "vi-travel-005",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi bị lạc đường, bạn có thể chỉ đường giúp tôi không?",
+    "referenceTranslation": "道に迷ってしまいました。道を教えていただけますか?"
+  }
+]

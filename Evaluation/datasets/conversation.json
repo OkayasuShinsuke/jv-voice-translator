@@ -1,0 +1,74 @@
+[
+  {
+    "id": "ja-conv-001",
+    "language": "ja-JP",
+    "referenceTranscript": "おはようございます。昨日はよく眠れましたか?",
+    "referenceTranslation": "Chào buổi sáng. Hôm qua bạn ngủ có ngon không?"
+  },
+  {
+    "id": "ja-conv-002",
+    "language": "ja-JP",
+    "referenceTranscript": "お腹が空きました。一緒に昼ご飯を食べに行きませんか?",
+    "referenceTranslation": "Tôi đói bụng rồi. Chúng ta cùng đi ăn trưa nhé?"
+  },
+  {
+    "id": "ja-conv-003",
+    "language": "ja-JP",
+    "referenceTranscript": "今週末は何をする予定ですか?",
+    "referenceTranslation": "Cuối tuần này bạn định làm gì?"
+  },
+  {
+    "id": "ja-conv-004",
+    "language": "ja-JP",
+    "referenceTranscript": "すみません、もう一度ゆっくり言ってください。",
+    "referenceTranslation": "Xin lỗi, bạn vui lòng nói chậm lại một lần nữa."
+  },
+  {
+    "id": "ja-conv-005",
+    "language": "ja-JP",
+    "referenceTranscript": "今日はとても暑いですね。",
+    "referenceTranslation": "Hôm nay trời nóng quá nhỉ."
+  },
+  {
+    "id": "ja-conv-006",
+    "language": "ja-JP",
+    "referenceTranscript": "誕生日おめでとう!プレゼントを気に入ってくれると嬉しいです。",
+    "referenceTranslation": "Chúc mừng sinh nhật! Mình mong bạn sẽ thích món quà này."
+  },
+  {
+    "id": "vi-conv-001",
+    "language": "vi-VN",
+    "referenceTranscript": "Bạn đã ăn cơm chưa?",
+    "referenceTranslation": "ご飯はもう食べましたか?"
+  },
+  {
+    "id": "vi-conv-002",
+    "language": "vi-VN",
+    "referenceTranscript": "Dạo này công việc của bạn thế nào?",
+    "referenceTranslation": "最近、お仕事はどうですか?"
+  },
+  {
+    "id": "vi-conv-003",
+    "language": "vi-VN",
+    "referenceTranscript": "Cảm ơn bạn rất nhiều, hẹn gặp lại lần sau.",
+    "referenceTranslation": "本当にありがとうございます。また今度会いましょう。"
+  },
+  {
+    "id": "vi-conv-004",
+    "language": "vi-VN",
+    "referenceTranscript": "Tối nay mình sẽ nấu phở cho cả nhà.",
+    "referenceTranslation": "今夜は家族みんなのためにフォーを作ります。"
+  },
+  {
+    "id": "vi-conv-005",
+    "language": "vi-VN",
+    "referenceTranscript": "Trời sắp mưa rồi, bạn nhớ mang theo ô nhé.",
+    "referenceTranslation": "もうすぐ雨が降りそうだから、傘を持っていくのを忘れないでね。"
+  },
+  {
+    "id": "vi-conv-006",
+    "language": "vi-VN",
+    "referenceTranscript": "Con mèo nhà tôi rất thích ngủ trên ghế sofa.",
+    "referenceTranslation": "うちの猫はソファの上で寝るのが大好きです。"
+  }
+]
