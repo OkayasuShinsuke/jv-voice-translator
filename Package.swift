@@ -38,5 +38,6 @@ let package = Package(
         .testTarget(name: "EvaluationTests", dependencies: ["Evaluation"]),
         .testTarget(name: "CompanionLinkTests", dependencies: ["CompanionLink"]),
         .testTarget(name: "SpeechRecognitionTests", dependencies: ["SpeechRecognition"]),
+        .testTarget(name: "SpeechSynthesisTests", dependencies: ["SpeechSynthesis", "TranslatorCore"]),
     ]
 )
