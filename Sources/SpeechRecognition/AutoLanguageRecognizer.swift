@@ -27,7 +27,7 @@ extension LanguageArbiter {
 /// 使う認識の仕組みは言語ごとに自動で選ぶ:
 /// - iOS 26 以降でその言語に対応していれば SpeechAnalyzer(新しくて速い)
 /// - そうでなければ SFSpeechRecognizer(AppleSpeechRecognizer と同じ仕組み)
-public final class AutoLanguageRecognizer: SpeechRecognizing, @unchecked Sendable {
+public final class AutoLanguageRecognizer: PausableSpeechRecognizing, @unchecked Sendable {
     /// どの認識の仕組みを使うか。
     public enum EnginePreference: Sendable, Equatable {
         /// SpeechAnalyzer が使えればそれを、だめなら SFSpeechRecognizer を使う。
@@ -131,6 +131,16 @@ public final class AutoLanguageRecognizer: SpeechRecognizing, @unchecked Sendabl
             return current
         }
         await current?.stop()
+    }
+
+    /// 聞き取りを一時停止する(自分の読み上げの最中など)。マイクは動いたままだが、認識は進まなくなる。
+    public func pause() async {
+        locked { session }?.pause()
+    }
+
+    /// 一時停止していた聞き取りを再開する。
+    public func resume() async {
+        locked { session }?.resume()
     }
 
     /// 言語ごとに、使える認識の仕組みを選んでエンジンを作る。

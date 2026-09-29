@@ -109,6 +109,9 @@ public actor TranslationPipeline {
         onTranslationChunk: @escaping @Sendable (String) -> Void = { _ in },
         onEvent: @escaping @Sendable (TranslationEvent) -> Void = { _ in }
     ) async throws {
+        // 認識器が一時停止に対応していれば、読み上げ中は実際にマイクの聞き取りを止める。
+        // 対応していなければ nil のままで、これまでどおり isHandling フラグでの無視だけになる。
+        let pausable = recognizer as? PausableSpeechRecognizing
         var pendingHandling: [Task<Void, Never>] = []
         for try await transcript in recognizer.transcripts(candidates: Language.allCases) {
             // 翻訳・読み上げの最中に届いた音(自分の声が返ってきたもの等)は、次の話として扱わない。
@@ -117,11 +120,12 @@ public actor TranslationPipeline {
             guard transcript.isFinal else { continue }
 
             isHandling = true
+            await pausable?.pause()
             pendingHandling.append(Task {
                 if let event = try? await self.handle(transcript, onChunk: onTranslationChunk) {
                     onEvent(event)
                 }
-                await self.finishHandling()
+                await self.finishHandling(pausable)
             })
         }
         // ストリームが終わっても、最後に走らせた処理が終わるまでは run() を終わらせない。
@@ -130,9 +134,11 @@ public actor TranslationPipeline {
         }
     }
 
-    /// 1通分の処理(handle)が終わったときに呼ぶ。次の手紙を受け付けられるようにする。
-    private func finishHandling() {
+    /// 1通分の処理(handle)が終わったときに呼ぶ。次の手紙を受け付けられるようにし、
+    /// 一時停止していたマイクの聞き取りも再開する。
+    private func finishHandling(_ pausable: PausableSpeechRecognizing?) async {
         isHandling = false
+        await pausable?.resume()
     }
 
     public func stop() async {

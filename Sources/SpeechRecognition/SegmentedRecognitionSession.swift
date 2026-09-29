@@ -159,6 +159,7 @@ final class SegmentedRecognitionSession: @unchecked Sendable {
     private let lock = NSLock()
     private var state = State.preparing
     private var segmenter: SilenceSegmenter
+    private var micGate = MicGate()
     private var engines: [UtteranceEngine] = []
     private var latest: [Language: UtteranceSnapshot] = [:]
     private var utteranceIndex = 0
@@ -238,13 +239,24 @@ final class SegmentedRecognitionSession: @unchecked Sendable {
     // 音声スレッドから呼ばれる。
     private func didCapture(_ buffer: AVAudioPCMBuffer, level: Float) {
         let targets = locked { () -> [UtteranceEngine] in
-            guard state == .running else { return [] }
+            // 一時停止中(自分の読み上げの最中など)は、音はここで止め、エンジンには何も渡さない。
+            guard state == .running, micGate.shouldForwardAudio else { return [] }
             if segmenter.observeAudioLevel(level, at: Self.now()) {
                 cutLocked(startNext: true)
             }
             return engines
         }
         for engine in targets { engine.append(buffer) }
+    }
+
+    /// 聞き取りを一時停止する。マイクそのものは動き続けるが、認識エンジンには音を渡さなくなる。
+    func pause() {
+        locked { micGate.pause() }
+    }
+
+    /// 一時停止していた聞き取りを再開する。
+    func resume() {
+        locked { micGate.resume() }
     }
 
     private func engineDidUpdate(_ language: Language, _ snapshot: UtteranceSnapshot) {

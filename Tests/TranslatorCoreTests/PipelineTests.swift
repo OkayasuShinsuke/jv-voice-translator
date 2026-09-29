@@ -130,6 +130,19 @@ final class PipelineTests: XCTestCase {
         XCTAssertEqual(events.items.count, 1)
         XCTAssertEqual(events.items.first?.source.text, "こんにちは")
     }
+
+    func testPausableRecognizerIsPausedWhileHandlingAndResumedAfter() async throws {
+        let synth = RecordingSynthesizer()
+        let recognizer = PausableFakeRecognizer(events: [
+            (Transcript(text: "こんにちは", language: .japanese, isFinal: true), 0),
+        ])
+        let pipeline = TranslationPipeline(recognizer: recognizer, translator: SlowTranslator(delay: 0.05), synthesizer: synth)
+        try await pipeline.run()
+
+        // 処理中は一時停止し、終わったら再開している(この順番どおりに1回ずつ)。
+        let calls = await recognizer.calls
+        XCTAssertEqual(calls, ["pause", "resume"])
+    }
 }
 
 /// 文ごとに訳し、1文ずつ流す偽物のストリーム翻訳器。
@@ -182,4 +195,34 @@ struct ScriptedRecognizer: SpeechRecognizing {
 /// テストの中だけで使う、確定イベントを集めるための箱(TranscriptCollector と同じ理由で @unchecked Sendable)。
 final class EventCollector: @unchecked Sendable {
     var items: [TranslationEvent] = []
+}
+
+/// 一時停止・再開が呼ばれた順番を記録する、偽物の一時停止対応認識器。
+actor PausableFakeRecognizer: PausableSpeechRecognizing {
+    private let events: [(Transcript, TimeInterval)]
+    private(set) var calls: [String] = []
+
+    init(events: [(Transcript, TimeInterval)]) {
+        self.events = events
+    }
+
+    nonisolated func transcripts(candidates: [Language]) -> AsyncThrowingStream<Transcript, Error> {
+        let events = self.events
+        return AsyncThrowingStream { continuation in
+            Task {
+                for (transcript, delay) in events {
+                    if delay > 0 {
+                        try? await Task.sleep(nanoseconds: UInt64(delay * 1_000_000_000))
+                    }
+                    continuation.yield(transcript)
+                }
+                continuation.finish()
+            }
+        }
+    }
+
+    func stop() async {}
+
+    func pause() async { calls.append("pause") }
+    func resume() async { calls.append("resume") }
 }
