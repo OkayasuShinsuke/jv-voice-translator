@@ -182,7 +182,8 @@ struct ContentView: View {
 }
 
 /// 画面で選んだ言語だけで聞き取らせるための小さな包み紙。
-struct LanguageLockedRecognizer: SpeechRecognizing {
+/// 中身(base)が一時停止に対応していれば、その機能もそのまま素通しする。
+struct LanguageLockedRecognizer: PausableSpeechRecognizing {
     let base: SpeechRecognizing
     let language: Language
 
@@ -191,4 +192,7 @@ struct LanguageLockedRecognizer: SpeechRecognizing {
     }
 
     func stop() async { await base.stop() }
+
+    func pause() async { await (base as? PausableSpeechRecognizing)?.pause() }
+    func resume() async { await (base as? PausableSpeechRecognizing)?.resume() }
 }

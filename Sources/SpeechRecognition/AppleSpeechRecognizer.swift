@@ -12,7 +12,7 @@ import TranslatorCore
 /// - 日本語とベトナム語の両方を渡すと、2つの認識器に同じ音声を聞かせて、
 ///   LanguageArbiter が文ごとに良いほうを選ぶ(自動言語判定)。
 /// - 0.8 秒ほど黙ると(SilenceSegmenter)、その文を isFinal=true で1回だけ流す。
-public final class AppleSpeechRecognizer: SpeechRecognizing, @unchecked Sendable {
+public final class AppleSpeechRecognizer: PausableSpeechRecognizing, @unchecked Sendable {
     private let base: AutoLanguageRecognizer
 
     /// true なら端末内だけで認識する(通信なし・無料)。対応していない言語では自動で false 扱い。
@@ -49,6 +49,14 @@ public final class AppleSpeechRecognizer: SpeechRecognizing, @unchecked Sendable
 
     public func stop() async {
         await base.stop()
+    }
+
+    public func pause() async {
+        await base.pause()
+    }
+
+    public func resume() async {
+        await base.resume()
     }
 }
 
