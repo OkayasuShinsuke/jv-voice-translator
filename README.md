@@ -25,7 +25,8 @@ Sources/
 Tests/                   自動テスト
 Apps/iOS/                iPhone アプリ本体(画面)
 Apps/macOS/              Mac コンパニオンアプリ
-Evaluation/datasets/     評価用の例文データ
+Evaluation/datasets/     評価用の例文データ(tatoeba.json は Tatoeba 由来、出典は tatoeba_ATTRIBUTION.md)
+Evaluation/scripts/      評価データを作るスクリプト(import_tatoeba.py)
 project.yml              Xcode プロジェクトの設計図(XcodeGen 用)
 docs/                    設計・開発の進め方
 ```
