@@ -1,0 +1,62 @@
+[
+  {
+    "id": "ja-admin-001",
+    "language": "ja-JP",
+    "referenceTranscript": "財布を盗まれました。警察署はどこにありますか?被害届を出したいです。",
+    "referenceTranslation": "Tôi bị mất trộm ví. Đồn công an ở đâu vậy? Tôi muốn trình báo mất cắp."
+  },
+  {
+    "id": "ja-admin-002",
+    "language": "ja-JP",
+    "referenceTranscript": "ビザの延長をしたいのですが、どの書類が必要ですか?",
+    "referenceTranslation": "Tôi muốn gia hạn visa, cần những giấy tờ gì ạ?"
+  },
+  {
+    "id": "ja-admin-003",
+    "language": "ja-JP",
+    "referenceTranscript": "パスポートを紛失したので、大使館で再発行の手続きをしたいです。",
+    "referenceTranslation": "Tôi bị mất hộ chiếu nên muốn làm thủ tục cấp lại tại đại sứ quán."
+  },
+  {
+    "id": "ja-admin-004",
+    "language": "ja-JP",
+    "referenceTranscript": "この書類にサインする前に、内容を日本語で説明してもらえますか?",
+    "referenceTranslation": "Trước khi ký giấy tờ này, bạn có thể giải thích nội dung bằng tiếng Nhật cho tôi được không?"
+  },
+  {
+    "id": "ja-admin-005",
+    "language": "ja-JP",
+    "referenceTranscript": "落とし物を交番に届けたいのですが、身分証明書は必要ですか?",
+    "referenceTranslation": "Tôi muốn nộp đồ nhặt được ở trạm cảnh sát, có cần giấy tờ tùy thân không?"
+  },
+  {
+    "id": "vi-admin-001",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi bị mất hành lý ở sân bay, tôi phải báo cho ai?",
+    "referenceTranslation": "空港で荷物をなくしてしまいました。誰に報告すればいいですか?"
+  },
+  {
+    "id": "vi-admin-002",
+    "language": "vi-VN",
+    "referenceTranscript": "Cho tôi hỏi thủ tục xin gia hạn thị thực mất bao lâu?",
+    "referenceTranslation": "ビザの延長手続きはどのくらい時間がかかりますか?"
+  },
+  {
+    "id": "vi-admin-003",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi cần khai báo tạm trú ở đâu?",
+    "referenceTranslation": "滞在の届け出はどこですればいいですか?"
+  },
+  {
+    "id": "vi-admin-004",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi bị va chạm xe nhẹ, cần gọi cảnh sát không?",
+    "referenceTranslation": "軽い接触事故を起こしてしまいました。警察を呼ぶ必要がありますか?"
+  },
+  {
+    "id": "vi-admin-005",
+    "language": "vi-VN",
+    "referenceTranscript": "Xin lỗi, tôi có thể xin một bản sao của giấy tờ này không?",
+    "referenceTranslation": "すみません、この書類のコピーをいただけますか?"
+  }
+]
