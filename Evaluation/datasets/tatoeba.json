@@ -1,0 +1,1202 @@
+[
+  {
+    "id": "ja-tatoeba-001",
+    "language": "ja-JP",
+    "referenceTranscript": "違うよ、新しい彼じゃない。",
+    "referenceTranslation": "Không, anh ấy không phải bạn trai mới của tôi."
+  },
+  {
+    "id": "ja-tatoeba-002",
+    "language": "ja-JP",
+    "referenceTranscript": "授業が全然無いとでも言うの？！",
+    "referenceTranslation": "Bạn không bao giờ có lớp hay sao?"
+  },
+  {
+    "id": "ja-tatoeba-003",
+    "language": "ja-JP",
+    "referenceTranscript": "ここから遠くまで行けるボートが欲しいです。",
+    "referenceTranslation": "Tôi muốn một chiếc thuyền sẽ đưa tôi đi xa khỏi nơi đây."
+  },
+  {
+    "id": "ja-tatoeba-004",
+    "language": "ja-JP",
+    "referenceTranscript": "だが宇宙は無限だ。",
+    "referenceTranslation": "Nhưng mà vũ trụ là vô tận."
+  },
+  {
+    "id": "ja-tatoeba-005",
+    "language": "ja-JP",
+    "referenceTranscript": "わははは！そりゃ傑作だ！",
+    "referenceTranslation": "A ha ha ha! Đó quả là một kiệt tác!"
+  },
+  {
+    "id": "ja-tatoeba-006",
+    "language": "ja-JP",
+    "referenceTranscript": "五輪旗の右端の輪っかって何色だったっけか？",
+    "referenceTranslation": "Vòng tròn ở phía ngoài cùng bên phải của lá cờ Olympic có màu gì?"
+  },
+  {
+    "id": "ja-tatoeba-007",
+    "language": "ja-JP",
+    "referenceTranscript": "話は遠い昔に始まる。",
+    "referenceTranslation": "Câu chuyện bắt đầu từ rất lâu rồi."
+  },
+  {
+    "id": "ja-tatoeba-008",
+    "language": "ja-JP",
+    "referenceTranscript": "両親は自分の子供たちの安全に責任がある。",
+    "referenceTranslation": "Cha mẹ có trách nhiệm cho sự an toàn của con mình."
+  },
+  {
+    "id": "ja-tatoeba-009",
+    "language": "ja-JP",
+    "referenceTranscript": "来て下さるだけでいいのです。",
+    "referenceTranslation": "Bạn đến là được rồi."
+  },
+  {
+    "id": "ja-tatoeba-010",
+    "language": "ja-JP",
+    "referenceTranscript": "病院でクリスマスを過ごさなければならないのではと彼はひどく心配した。",
+    "referenceTranslation": "Anh ấy đã rất lo lắng về việc sẽ phải dành thời gian Giáng Sinh ở bệnh viện."
+  },
+  {
+    "id": "ja-tatoeba-011",
+    "language": "ja-JP",
+    "referenceTranscript": "彼女はいつも流行の服を着ている。",
+    "referenceTranslation": "Cô ấy luôn mặc quần áo sành điệu."
+  },
+  {
+    "id": "ja-tatoeba-012",
+    "language": "ja-JP",
+    "referenceTranscript": "彼女の顔には笑いが込み上げていた。",
+    "referenceTranslation": "Một nụ cười trào dâng trên khuôn mặt cô ấy."
+  },
+  {
+    "id": "ja-tatoeba-013",
+    "language": "ja-JP",
+    "referenceTranscript": "彼らは庭で昼食をとっている。",
+    "referenceTranslation": "Họ đang ăn trưa trong vườn."
+  },
+  {
+    "id": "ja-tatoeba-014",
+    "language": "ja-JP",
+    "referenceTranscript": "彼らは互いに賞賛し合っている。",
+    "referenceTranslation": "Họ đang khen ngợi lẫn nhau."
+  },
+  {
+    "id": "ja-tatoeba-015",
+    "language": "ja-JP",
+    "referenceTranscript": "彼らはこの町に住んでいる。",
+    "referenceTranslation": "Họ sống trong thị trấn này."
+  },
+  {
+    "id": "ja-tatoeba-016",
+    "language": "ja-JP",
+    "referenceTranscript": "彼は彼女の意見を採用した。",
+    "referenceTranslation": "Anh ấy đã làm theo ý kiến của cô ấy."
+  },
+  {
+    "id": "ja-tatoeba-017",
+    "language": "ja-JP",
+    "referenceTranscript": "彼は難民救済基金に１万ドルを寄付した。",
+    "referenceTranslation": "Anh ấy đã quyên góp 10 nghìn Đô-la cho quỹ hỗ trợ người tị nạn."
+  },
+  {
+    "id": "ja-tatoeba-018",
+    "language": "ja-JP",
+    "referenceTranscript": "彼は昨年遺書を書いた。",
+    "referenceTranslation": "Năm ngoái ông ấy đã viết một bức di chúc."
+  },
+  {
+    "id": "ja-tatoeba-019",
+    "language": "ja-JP",
+    "referenceTranscript": "彼は自分のお金を株に投資した。",
+    "referenceTranslation": "Anh ấy dùng tiền của mình đầu tư chứng khoán."
+  },
+  {
+    "id": "ja-tatoeba-020",
+    "language": "ja-JP",
+    "referenceTranscript": "彼はその仕事をするのにまだ若すぎる。",
+    "referenceTranslation": "Anh ta còn quá trẻ để làm công việc đó."
+  },
+  {
+    "id": "ja-tatoeba-021",
+    "language": "ja-JP",
+    "referenceTranscript": "彼はしょっちゅうガキ仲間と街でたむろしている。",
+    "referenceTranslation": "Anh ta rất hay đi chơi với đám trẻ trên phố."
+  },
+  {
+    "id": "ja-tatoeba-022",
+    "language": "ja-JP",
+    "referenceTranscript": "彼はクラスの他のどの少年よりも速く泳げる。",
+    "referenceTranslation": "Anh ta có thể bơi nhanh hơn bất kì nam sinh nào trong lớp."
+  },
+  {
+    "id": "ja-tatoeba-023",
+    "language": "ja-JP",
+    "referenceTranscript": "彼はうずくまって泣き続けた。",
+    "referenceTranslation": "Anh ta cúi xuống và tiếp tục khóc."
+  },
+  {
+    "id": "ja-tatoeba-024",
+    "language": "ja-JP",
+    "referenceTranscript": "彼はあなたをとても愛しています。",
+    "referenceTranslation": "Anh ta rất yêu bạn."
+  },
+  {
+    "id": "ja-tatoeba-025",
+    "language": "ja-JP",
+    "referenceTranscript": "彼が今日授業をさぼった理由を知っていますか。",
+    "referenceTranslation": "Bạn có biết lý do vì sao hôm nay anh ấy trốn học không?"
+  },
+  {
+    "id": "ja-tatoeba-026",
+    "language": "ja-JP",
+    "referenceTranscript": "博覧会の会期はまだあと１カ月あります。",
+    "referenceTranslation": "Buổi triển lãm đó sẽ mở của thêm một tháng nữa."
+  },
+  {
+    "id": "ja-tatoeba-027",
+    "language": "ja-JP",
+    "referenceTranscript": "他にご用は？",
+    "referenceTranslation": "Bạn có cần gí nữa không?"
+  },
+  {
+    "id": "ja-tatoeba-028",
+    "language": "ja-JP",
+    "referenceTranscript": "水泳では兄といい勝負だ。",
+    "referenceTranslation": "Tôi có thể bơi ngang ngửa với anh tôi."
+  },
+  {
+    "id": "ja-tatoeba-029",
+    "language": "ja-JP",
+    "referenceTranscript": "冗談はやめて。",
+    "referenceTranslation": "Đừng đùa nữa."
+  },
+  {
+    "id": "ja-tatoeba-030",
+    "language": "ja-JP",
+    "referenceTranscript": "彼は自分の部屋で本を読んでいます。",
+    "referenceTranslation": "Anh ấy đang đọc một cuốn sách trong phòng mình."
+  },
+  {
+    "id": "ja-tatoeba-031",
+    "language": "ja-JP",
+    "referenceTranscript": "耳がかぶれています。",
+    "referenceTranslation": "Tôi bị viêm tai."
+  },
+  {
+    "id": "ja-tatoeba-032",
+    "language": "ja-JP",
+    "referenceTranscript": "私達は川に飛び込んだ。",
+    "referenceTranslation": "Chúng tôi đã nhảy xuống sông."
+  },
+  {
+    "id": "ja-tatoeba-033",
+    "language": "ja-JP",
+    "referenceTranscript": "私は彼の気持ちを傷付けたかもしれない。",
+    "referenceTranslation": "Có lẽ tôi đã làm tổn thương cảm xúc của anh ta rồi."
+  },
+  {
+    "id": "ja-tatoeba-034",
+    "language": "ja-JP",
+    "referenceTranscript": "私の言葉が彼女を傷つけるとは考えもしなかった。",
+    "referenceTranslation": "Tôi chưa từng nghĩ là những lời nói của tôi lại làm tổn thương cô ấy."
+  },
+  {
+    "id": "ja-tatoeba-035",
+    "language": "ja-JP",
+    "referenceTranscript": "今夜は外で食事をしようと彼は私に言った。",
+    "referenceTranslation": "Anh ấy nói với tôi là tối nay chúng ta ăn ngoài đi."
+  },
+  {
+    "id": "ja-tatoeba-036",
+    "language": "ja-JP",
+    "referenceTranscript": "今度は彼は成功した。",
+    "referenceTranslation": "Lần này anh ta đã thành công."
+  },
+  {
+    "id": "ja-tatoeba-037",
+    "language": "ja-JP",
+    "referenceTranscript": "君がとても失礼だから、殴ってやりたいよ。",
+    "referenceTranslation": "Bạn cực kỳ thô lỗ, nên tôi muốn đấm bạn lắm rồi đấy."
+  },
+  {
+    "id": "ja-tatoeba-038",
+    "language": "ja-JP",
+    "referenceTranscript": "鬼の居ぬ間に洗濯。",
+    "referenceTranslation": "Vắng chủ nhà gà mọc đuôi tôm."
+  },
+  {
+    "id": "ja-tatoeba-039",
+    "language": "ja-JP",
+    "referenceTranscript": "もっと背が高ければいいのになあ。",
+    "referenceTranslation": "Tôi ước gì tôi cao hơn."
+  },
+  {
+    "id": "ja-tatoeba-040",
+    "language": "ja-JP",
+    "referenceTranscript": "マイクはバレーボールチームのメンバーではない。",
+    "referenceTranslation": "Mike không phải là thành viên của đội bóng chuyền."
+  },
+  {
+    "id": "ja-tatoeba-041",
+    "language": "ja-JP",
+    "referenceTranscript": "ピントがズレている。",
+    "referenceTranslation": "Ảnh này bị out nét."
+  },
+  {
+    "id": "ja-tatoeba-042",
+    "language": "ja-JP",
+    "referenceTranscript": "どこかで聞いたような気もするね。",
+    "referenceTranslation": "Hình như tôi có nghe qua cái đó ở đâu rồi thì phải."
+  },
+  {
+    "id": "ja-tatoeba-043",
+    "language": "ja-JP",
+    "referenceTranscript": "ご家族はお元気ですか。",
+    "referenceTranslation": "Gia đình bạn có khỏe không?"
+  },
+  {
+    "id": "ja-tatoeba-044",
+    "language": "ja-JP",
+    "referenceTranscript": "この辺は全く不案内です。",
+    "referenceTranslation": "Tôi không rành nơi này lắm."
+  },
+  {
+    "id": "ja-tatoeba-045",
+    "language": "ja-JP",
+    "referenceTranscript": "ここのところ目が回るほど仕事が忙しくて、ビデオを見る暇もない。",
+    "referenceTranslation": "Dạo này công việc nhiều đến hoa cả mắt, đến mức tôi còn không có thời gian xem một cái video."
+  },
+  {
+    "id": "ja-tatoeba-046",
+    "language": "ja-JP",
+    "referenceTranscript": "ここで止まるな。",
+    "referenceTranslation": "Đừng dừng lại ở đây."
+  },
+  {
+    "id": "ja-tatoeba-047",
+    "language": "ja-JP",
+    "referenceTranscript": "コーヒーか紅茶、どちらになさいますか。",
+    "referenceTranslation": "Bạn muốn dùng cà phê hay dùng trà?"
+  },
+  {
+    "id": "ja-tatoeba-048",
+    "language": "ja-JP",
+    "referenceTranscript": "ケンは、英語に磨きをかけたいと思っている。",
+    "referenceTranslation": "Ken mong muốn trau dồi vốn tiếng Anh của bản thân."
+  },
+  {
+    "id": "ja-tatoeba-049",
+    "language": "ja-JP",
+    "referenceTranscript": "カラオケが大嫌い。",
+    "referenceTranslation": "Tôi cực kỳ ghét karaoke."
+  },
+  {
+    "id": "ja-tatoeba-050",
+    "language": "ja-JP",
+    "referenceTranscript": "お名前とご住所をお書きください。",
+    "referenceTranslation": "Xin hãy viết tên và địa chỉ của bạn."
+  },
+  {
+    "id": "ja-tatoeba-051",
+    "language": "ja-JP",
+    "referenceTranscript": "ええ、どうぞ来てね。",
+    "referenceTranslation": "Vâng, xin mời tới đây."
+  },
+  {
+    "id": "ja-tatoeba-052",
+    "language": "ja-JP",
+    "referenceTranscript": "うちでは万事旨く行っています。",
+    "referenceTranslation": "Ở nhà thì mọi chuyện vẫn ổn."
+  },
+  {
+    "id": "ja-tatoeba-053",
+    "language": "ja-JP",
+    "referenceTranscript": "ありったけの貯金をはたいてこれを買った。",
+    "referenceTranslation": "Tôi đã sử dụng toàn bộ số tiền tiết kiệm của mình để mua cái này."
+  },
+  {
+    "id": "ja-tatoeba-054",
+    "language": "ja-JP",
+    "referenceTranscript": "あなたはすぐに新しい大学生活に慣れるだろう。",
+    "referenceTranslation": "Bạn chắc sẽ quen với cuộc sống mới ở đại học ngay thôi."
+  },
+  {
+    "id": "ja-tatoeba-055",
+    "language": "ja-JP",
+    "referenceTranscript": "明日、電話でご連絡いたします。",
+    "referenceTranslation": "Ngày mai tôi sẽ liên lạc với bạn qua điện thoại."
+  },
+  {
+    "id": "ja-tatoeba-056",
+    "language": "ja-JP",
+    "referenceTranscript": "５台の消防車が火事の現場に駆けつけた。",
+    "referenceTranslation": "Có năm xe cứu hỏa đã đến hiện trường vụ cháy."
+  },
+  {
+    "id": "ja-tatoeba-057",
+    "language": "ja-JP",
+    "referenceTranscript": "そのドレスを着たら、尻軽な女みたいね。",
+    "referenceTranslation": "Mặc cái váy đó trông bạn như gái gọi ấy."
+  },
+  {
+    "id": "ja-tatoeba-058",
+    "language": "ja-JP",
+    "referenceTranscript": "他の人達は数分以内に着くでしょう。",
+    "referenceTranslation": "Sau ít phút nữa những người khác sẽ đến."
+  },
+  {
+    "id": "ja-tatoeba-059",
+    "language": "ja-JP",
+    "referenceTranscript": "ブリトニー・スピアーズはどこですか。",
+    "referenceTranslation": "Britney Spears đang ở đâu?"
+  },
+  {
+    "id": "ja-tatoeba-060",
+    "language": "ja-JP",
+    "referenceTranscript": "彼はうまく歌えません。",
+    "referenceTranslation": "Anh ta hát không hay."
+  },
+  {
+    "id": "ja-tatoeba-061",
+    "language": "ja-JP",
+    "referenceTranscript": "彼女はとても綺麗な人です。",
+    "referenceTranslation": "Cô ấy là một người rất xinh đẹp."
+  },
+  {
+    "id": "ja-tatoeba-062",
+    "language": "ja-JP",
+    "referenceTranscript": "ジャスティンビーバーはケーティーホルムズよりも有名です。",
+    "referenceTranslation": "Justin Bieber nổi tiếng hơn Katie Holmes nhiều."
+  },
+  {
+    "id": "ja-tatoeba-063",
+    "language": "ja-JP",
+    "referenceTranscript": "その家はお化け屋敷と言われます。",
+    "referenceTranslation": "Ngôi nhà đó được cho là bị ma ám."
+  },
+  {
+    "id": "ja-tatoeba-064",
+    "language": "ja-JP",
+    "referenceTranscript": "それよりもっと小さいものはありませんか？",
+    "referenceTranslation": "Bạn có cái nào nhỏ hơn cái đó không?"
+  },
+  {
+    "id": "ja-tatoeba-065",
+    "language": "ja-JP",
+    "referenceTranscript": "９世紀以降のバイキングの勢力拡大はノルマンディ、ガリシア、アンダルシア、シチリア、クリミアといった地域へと達した。",
+    "referenceTranslation": "Từ sau thế kỷ IX, thế lực của người Viking đã lan rộng tới các vùng như Normandie, Galicia, Andalusia, Sicilia và Crimea."
+  },
+  {
+    "id": "ja-tatoeba-066",
+    "language": "ja-JP",
+    "referenceTranscript": "彼らは君より背が高いかもしれない。",
+    "referenceTranslation": "Họ có lẽ cao hơn bạn."
+  },
+  {
+    "id": "ja-tatoeba-067",
+    "language": "ja-JP",
+    "referenceTranscript": "お昼ご飯を食べなかったから、腹ぺこだ。",
+    "referenceTranslation": "Vì không ăn trưa nên tôi đói."
+  },
+  {
+    "id": "ja-tatoeba-068",
+    "language": "ja-JP",
+    "referenceTranscript": "逃すわけない。",
+    "referenceTranslation": "Tôi sẽ không để bạn chạy thoát đâu."
+  },
+  {
+    "id": "ja-tatoeba-069",
+    "language": "ja-JP",
+    "referenceTranscript": "私たちはスペイン語の歌を習いたいです。",
+    "referenceTranslation": "Chúng tôi muốn học một vài bài hát tiếng Tây Ban Nha."
+  },
+  {
+    "id": "ja-tatoeba-070",
+    "language": "ja-JP",
+    "referenceTranscript": "愛は存在しない。",
+    "referenceTranslation": "Tình yêu không tồn tại."
+  },
+  {
+    "id": "ja-tatoeba-071",
+    "language": "ja-JP",
+    "referenceTranscript": "よく寝た。そのあとで気が晴れた。",
+    "referenceTranslation": "Tôi đã ngủ rất ngon. Sau đó tôi thấy thoải mái."
+  },
+  {
+    "id": "ja-tatoeba-072",
+    "language": "ja-JP",
+    "referenceTranscript": "ハリケーンの種類は風速によって決まります。",
+    "referenceTranslation": "Bão xoáy được phân loại dựa trên tốc độ gió."
+  },
+  {
+    "id": "ja-tatoeba-073",
+    "language": "ja-JP",
+    "referenceTranscript": "トムの奥さんが誰かは知りません。",
+    "referenceTranslation": "Tôi không biết vợ Tom là ai."
+  },
+  {
+    "id": "ja-tatoeba-074",
+    "language": "ja-JP",
+    "referenceTranscript": "彼女には私たちの団体での重要な役割があります。",
+    "referenceTranslation": "Cô ấy có vai trò quan trọng đối với tổ chức của chúng tôi."
+  },
+  {
+    "id": "ja-tatoeba-075",
+    "language": "ja-JP",
+    "referenceTranscript": "私はアパートを追い出されてしまった。",
+    "referenceTranslation": "Tôi bị đuổi ra khỏi căn hộ."
+  },
+  {
+    "id": "ja-tatoeba-076",
+    "language": "ja-JP",
+    "referenceTranscript": "ロンドンの大学に行かれるって本当ですか？",
+    "referenceTranslation": "Có thật là bạn sẽ học đại học ở London không?"
+  },
+  {
+    "id": "ja-tatoeba-077",
+    "language": "ja-JP",
+    "referenceTranscript": "トムはあまり持ち合わせがない。",
+    "referenceTranslation": "Tom không mang theo nhiều tiền trong người."
+  },
+  {
+    "id": "ja-tatoeba-078",
+    "language": "ja-JP",
+    "referenceTranscript": "9月10日は世界自殺予防デーです。",
+    "referenceTranslation": "Ngày 10 tháng 9 là ngày Thế giới Phòng chống Tự tử."
+  },
+  {
+    "id": "ja-tatoeba-079",
+    "language": "ja-JP",
+    "referenceTranscript": "今朝は何時に寝たの？",
+    "referenceTranslation": "Sáng nay bạn ngủ lúc mấy giờ thế?"
+  },
+  {
+    "id": "ja-tatoeba-080",
+    "language": "ja-JP",
+    "referenceTranscript": "トムはメアリーにもらった鍵でドアを開けた。",
+    "referenceTranslation": "Tom dùng chìa khóa Mary đưa cho để mở cửa."
+  },
+  {
+    "id": "ja-tatoeba-081",
+    "language": "ja-JP",
+    "referenceTranscript": "ジョージ・W・ブッシュは1946年にコネチカット州で生まれた。",
+    "referenceTranslation": "Geogre W. Bush được sinh ra ở bang Connecticut vào năm 1946."
+  },
+  {
+    "id": "ja-tatoeba-082",
+    "language": "ja-JP",
+    "referenceTranscript": "トムは自分の書類かばんの中を見てみた。",
+    "referenceTranslation": "Tom nhìn cặp tài liệu của mình."
+  },
+  {
+    "id": "ja-tatoeba-083",
+    "language": "ja-JP",
+    "referenceTranscript": "昔々あるところに、残忍な王様がいました。",
+    "referenceTranslation": "Ngày xửa ngày xưa, ở một nơi nọ, có một vị vua tàn nhẫn."
+  },
+  {
+    "id": "ja-tatoeba-084",
+    "language": "ja-JP",
+    "referenceTranscript": "海賊版のソフトを使っちゃダメだってば。",
+    "referenceTranslation": "Bạn không được dùng phần mềm lậu."
+  },
+  {
+    "id": "ja-tatoeba-085",
+    "language": "ja-JP",
+    "referenceTranscript": "男だって泣くことくらいあるさ。",
+    "referenceTranslation": "Đàn ông cũng có lúc khóc mà."
+  },
+  {
+    "id": "ja-tatoeba-086",
+    "language": "ja-JP",
+    "referenceTranscript": "自分で言ったこと覚えてないの？",
+    "referenceTranslation": "Bạn không nhớ chính mình đã nói gì sao?"
+  },
+  {
+    "id": "ja-tatoeba-087",
+    "language": "ja-JP",
+    "referenceTranscript": "あなたのお名前とお電話番号、いただけますか？",
+    "referenceTranslation": "Tôi có thể xin tên và số điện thoại của bạn được không?"
+  },
+  {
+    "id": "ja-tatoeba-088",
+    "language": "ja-JP",
+    "referenceTranscript": "あの頃はまだコンピューターが存在しなかった。",
+    "referenceTranslation": "Vào lúc đó thì chưa có máy tính."
+  },
+  {
+    "id": "ja-tatoeba-089",
+    "language": "ja-JP",
+    "referenceTranscript": "彼女の言ってることが聞こえない。",
+    "referenceTranslation": "Tôi không thể nghe thấy cô ấy nói gì cả."
+  },
+  {
+    "id": "ja-tatoeba-090",
+    "language": "ja-JP",
+    "referenceTranscript": "彼女の息子は病気です。",
+    "referenceTranslation": "Con cô ấy bị ốm."
+  },
+  {
+    "id": "ja-tatoeba-091",
+    "language": "ja-JP",
+    "referenceTranscript": "トムは祖父と祖母と一緒にボストンに住んでいる。",
+    "referenceTranslation": "Tom đang sống cùng với ông bà ở Boston."
+  },
+  {
+    "id": "ja-tatoeba-092",
+    "language": "ja-JP",
+    "referenceTranscript": "明日天気が良かったら行きます。",
+    "referenceTranslation": "Ngày mai tôi sẽ đi nếu thời tiết đẹp."
+  },
+  {
+    "id": "ja-tatoeba-093",
+    "language": "ja-JP",
+    "referenceTranscript": "このお肉美味しい。",
+    "referenceTranslation": "Thịt này rất ngon."
+  },
+  {
+    "id": "ja-tatoeba-094",
+    "language": "ja-JP",
+    "referenceTranscript": "トムは店で一番安いものを買った。",
+    "referenceTranslation": "Tom đã mua món đồ rẻ nhất trong cửa hàng."
+  },
+  {
+    "id": "ja-tatoeba-095",
+    "language": "ja-JP",
+    "referenceTranscript": "トムが仕事を辞めた理由を、誰もが知りたがった。",
+    "referenceTranslation": "Ai cũng muốn biết lý do Tom nghỉ việc."
+  },
+  {
+    "id": "ja-tatoeba-096",
+    "language": "ja-JP",
+    "referenceTranscript": "撃たれたの？",
+    "referenceTranslation": "Bạn bị bắn à?"
+  },
+  {
+    "id": "ja-tatoeba-097",
+    "language": "ja-JP",
+    "referenceTranscript": "トムはプロフィール写真と見た目が違った。",
+    "referenceTranslation": "Ảnh đại diện của Tom với bề ngoài thực sự của anh ta khác nhau."
+  },
+  {
+    "id": "ja-tatoeba-098",
+    "language": "ja-JP",
+    "referenceTranscript": "トムは周りを見回し、道に迷っていることに気付いた。",
+    "referenceTranslation": "Tom nhìn xung quanh, rồi nhận ra là mình lạc đường."
+  },
+  {
+    "id": "ja-tatoeba-099",
+    "language": "ja-JP",
+    "referenceTranscript": "防災科学技術は日々、急速な進化を遂げています。",
+    "referenceTranslation": "Các công nghệ khoa học kỹ thuật về phòng chống thiên tai đã và đang đạt được những bước tiến nhanh chóng mỗi ngày."
+  },
+  {
+    "id": "ja-tatoeba-100",
+    "language": "ja-JP",
+    "referenceTranscript": "トムが選ばれたんだ。",
+    "referenceTranslation": "Tom đã được chọn."
+  },
+  {
+    "id": "vi-tatoeba-001",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi hết lời để nói.",
+    "referenceTranslation": "何と言ったら良いか分かりません。"
+  },
+  {
+    "id": "vi-tatoeba-002",
+    "language": "vi-VN",
+    "referenceTranscript": "Mất bao nhiêu thời gian để đi từ đay tới ga?",
+    "referenceTranslation": "あなたが駅に着くのにどのくらいかかりますか。"
+  },
+  {
+    "id": "vi-tatoeba-003",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi cũng không đoán được.",
+    "referenceTranslation": "そのことは全く予想していませんでした。"
+  },
+  {
+    "id": "vi-tatoeba-004",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi muốn đi du học ở Paris.",
+    "referenceTranslation": "パリで勉強したい。"
+  },
+  {
+    "id": "vi-tatoeba-005",
+    "language": "vi-VN",
+    "referenceTranscript": "Vì hơi bị cảm lạnh, nên tôi đi ngủ sớm.",
+    "referenceTranslation": "風邪気味だったので、早く寝たよ。"
+  },
+  {
+    "id": "vi-tatoeba-006",
+    "language": "vi-VN",
+    "referenceTranscript": "Anh ta bị thương trong khi làm việc",
+    "referenceTranslation": "彼は仕事中の事故でケガをした。"
+  },
+  {
+    "id": "vi-tatoeba-007",
+    "language": "vi-VN",
+    "referenceTranscript": "Cứ sáu giờ tôi phải uống thuốc một lần.",
+    "referenceTranslation": "私は６時間ごとに薬を飲まないといけない。"
+  },
+  {
+    "id": "vi-tatoeba-008",
+    "language": "vi-VN",
+    "referenceTranscript": "Ông có nói tiếng Nhật không?",
+    "referenceTranslation": "日本語が話せますか。"
+  },
+  {
+    "id": "vi-tatoeba-009",
+    "language": "vi-VN",
+    "referenceTranscript": "Anh ta đã xuất phát tối qua.",
+    "referenceTranslation": "彼らは昨夜出発した。"
+  },
+  {
+    "id": "vi-tatoeba-010",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi đã thuyết phục em trai cố gắn học hơn nữa.",
+    "referenceTranslation": "私はもっと一生懸命勉強するように弟を説得した。"
+  },
+  {
+    "id": "vi-tatoeba-011",
+    "language": "vi-VN",
+    "referenceTranscript": "Cái tách nào là của bạn?",
+    "referenceTranslation": "どのカップがあなたのですか。"
+  },
+  {
+    "id": "vi-tatoeba-012",
+    "language": "vi-VN",
+    "referenceTranscript": "Chiếc xe của anh ta là model mới nhất.",
+    "referenceTranslation": "彼の車は最新式だ。"
+  },
+  {
+    "id": "vi-tatoeba-013",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi chưa hề gặp ai trong số những người con trai của anh ta.",
+    "referenceTranslation": "私は彼の息子のだれにでも会ったことがない。"
+  },
+  {
+    "id": "vi-tatoeba-014",
+    "language": "vi-VN",
+    "referenceTranscript": "Sau khi đi bộ được một khoảng, chúng tôi đã tới cái hồ.",
+    "referenceTranslation": "私たちはしばらく歩いた後、湖に出た。"
+  },
+  {
+    "id": "vi-tatoeba-015",
+    "language": "vi-VN",
+    "referenceTranscript": "Chúng tôi thực hiện kế hoạch đó.",
+    "referenceTranslation": "私達はその計画を実行した。"
+  },
+  {
+    "id": "vi-tatoeba-016",
+    "language": "vi-VN",
+    "referenceTranscript": "Có rất khách, phần lớn bọn họ là bạn bè và bạn cùng lớp của thầy giáo.",
+    "referenceTranslation": "お客様がたくさんいます。その中で先生のクラスメートと友達が多いです。"
+  },
+  {
+    "id": "vi-tatoeba-017",
+    "language": "vi-VN",
+    "referenceTranscript": "Bạn sống ở đâu?",
+    "referenceTranslation": "お住まいはどちらですか。"
+  },
+  {
+    "id": "vi-tatoeba-018",
+    "language": "vi-VN",
+    "referenceTranscript": "Không thể lơ là tên đó một phút nào hết.",
+    "referenceTranslation": "油断も隙もない奴だ。"
+  },
+  {
+    "id": "vi-tatoeba-019",
+    "language": "vi-VN",
+    "referenceTranscript": "Giá mà tối nay cô ấy đến.",
+    "referenceTranslation": "ゆうべ彼女が来ていたらなあ。"
+  },
+  {
+    "id": "vi-tatoeba-020",
+    "language": "vi-VN",
+    "referenceTranscript": "Mình không muốn đi làm.",
+    "referenceTranslation": "仕事に行きたくない。"
+  },
+  {
+    "id": "vi-tatoeba-021",
+    "language": "vi-VN",
+    "referenceTranscript": "tôi muốn ăn sushi",
+    "referenceTranslation": "寿司を食べたいです。"
+  },
+  {
+    "id": "vi-tatoeba-022",
+    "language": "vi-VN",
+    "referenceTranscript": "Lúc đó, tôi không biết Tom đã đến từ lúc nào.",
+    "referenceTranslation": "その時、僕はトムがいつついたのか知らなかった。"
+  },
+  {
+    "id": "vi-tatoeba-023",
+    "language": "vi-VN",
+    "referenceTranscript": "Họ đang trồng dâu tây trong nhà kính.",
+    "referenceTranslation": "彼らは温室でいちごを栽培している。"
+  },
+  {
+    "id": "vi-tatoeba-024",
+    "language": "vi-VN",
+    "referenceTranscript": "Bơi trong cái hồ này rất nguy hiểm.",
+    "referenceTranslation": "この湖で泳ぐのは危険だ。"
+  },
+  {
+    "id": "vi-tatoeba-025",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi muốn một chiếc điện thoại di động, nhưng tôi không có đủ tiền để mua.",
+    "referenceTranslation": "携帯電話がほしいのですが、支払うのに十分なお金がありません。"
+  },
+  {
+    "id": "vi-tatoeba-026",
+    "language": "vi-VN",
+    "referenceTranscript": "Mary viết số điện thoại của mình rồi đưa cho Tom.",
+    "referenceTranslation": "メアリーは自分の電話番号を書いてトムに渡した。"
+  },
+  {
+    "id": "vi-tatoeba-027",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi cần nói chuyện với Tom một chút.",
+    "referenceTranslation": "トムと少し話をする必要がある。"
+  },
+  {
+    "id": "vi-tatoeba-028",
+    "language": "vi-VN",
+    "referenceTranscript": "Cái đồng hồ này bao nhiêu tiền?",
+    "referenceTranslation": "この時計はいくらですか？"
+  },
+  {
+    "id": "vi-tatoeba-029",
+    "language": "vi-VN",
+    "referenceTranscript": "Hôm nay tôi phát hiện ra một nơi rất tuyệt vời.",
+    "referenceTranslation": "今日はとても素晴らしい場所を発見しました。"
+  },
+  {
+    "id": "vi-tatoeba-030",
+    "language": "vi-VN",
+    "referenceTranscript": "Cuốn sách này là của em đó.",
+    "referenceTranslation": "この本はきみのだよ。"
+  },
+  {
+    "id": "vi-tatoeba-031",
+    "language": "vi-VN",
+    "referenceTranscript": "Tom do dùng thuốc quá liều nên phải nhập viện để điều trị.",
+    "referenceTranslation": "トムはクスリをやりすぎて、治療で入院している。"
+  },
+  {
+    "id": "vi-tatoeba-032",
+    "language": "vi-VN",
+    "referenceTranscript": "Anh ấy kết hôn với một nữ diễn viên.",
+    "referenceTranslation": "彼は女優と結婚した。"
+  },
+  {
+    "id": "vi-tatoeba-033",
+    "language": "vi-VN",
+    "referenceTranscript": "Bạn nên đọc nhiều sách hơn.",
+    "referenceTranslation": "もっと沢山本を読んだほうが良いよ。"
+  },
+  {
+    "id": "vi-tatoeba-034",
+    "language": "vi-VN",
+    "referenceTranscript": "Tiểu thuyết mới của cô ấy sẽ được xuất bản vào tháng sau.",
+    "referenceTranslation": "彼女の新作の小説は来月出版される。"
+  },
+  {
+    "id": "vi-tatoeba-035",
+    "language": "vi-VN",
+    "referenceTranscript": "Mặt trăng đang tỏa sáng.",
+    "referenceTranslation": "月が明るく輝いている。"
+  },
+  {
+    "id": "vi-tatoeba-036",
+    "language": "vi-VN",
+    "referenceTranscript": "Cô ấy không thừa nhận là mình sai.",
+    "referenceTranslation": "彼女は自分が間違っていることを認めない。"
+  },
+  {
+    "id": "vi-tatoeba-037",
+    "language": "vi-VN",
+    "referenceTranscript": "Chúng tôi cùng nhau học tiếng Pháp.",
+    "referenceTranslation": "私たちは一緒にフランス語を勉強する。"
+  },
+  {
+    "id": "vi-tatoeba-038",
+    "language": "vi-VN",
+    "referenceTranscript": "Hãy nói thẳng với tôi.",
+    "referenceTranslation": "率直に話してください。"
+  },
+  {
+    "id": "vi-tatoeba-039",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi bị lên cơn hen.",
+    "referenceTranslation": "喘息の発作が起きました。"
+  },
+  {
+    "id": "vi-tatoeba-040",
+    "language": "vi-VN",
+    "referenceTranscript": "Anh ấy đã trở thành một ca sĩ bất chấp mong muốn của cha mẹ.",
+    "referenceTranslation": "彼は親の意に背いて歌手になった。"
+  },
+  {
+    "id": "vi-tatoeba-041",
+    "language": "vi-VN",
+    "referenceTranscript": "Không gì quý hơn sức khỏe.",
+    "referenceTranslation": "健康ほど貴重な物はない。"
+  },
+  {
+    "id": "vi-tatoeba-042",
+    "language": "vi-VN",
+    "referenceTranscript": "Chiếc ô tô đâm sượt qua góc.",
+    "referenceTranslation": "自動車は角をすれすれに通った。"
+  },
+  {
+    "id": "vi-tatoeba-043",
+    "language": "vi-VN",
+    "referenceTranscript": "Xin lỗi, bây giờ tôi còn đang dở việc một chút.",
+    "referenceTranslation": "すみません、今ちょっと手が離せないんです。"
+  },
+  {
+    "id": "vi-tatoeba-044",
+    "language": "vi-VN",
+    "referenceTranscript": "Câu chuyện bị ngắt quãng một chút.",
+    "referenceTranslation": "話がちょっと途切れた。"
+  },
+  {
+    "id": "vi-tatoeba-045",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi cũng mong rằng trong lúc tôi truyền đạt thông tin đến mọi người, chính tôi cũng có thể học và ôn tập lại những thông tin đó.",
+    "referenceTranslation": "みんなに伝えるがてらに自分も復習して勉強していきたいと思います。"
+  },
+  {
+    "id": "vi-tatoeba-046",
+    "language": "vi-VN",
+    "referenceTranscript": "Anh ấy có số điểm tốt hơn chúng tôi.",
+    "referenceTranslation": "彼は私たちよりよい点数を取った。"
+  },
+  {
+    "id": "vi-tatoeba-047",
+    "language": "vi-VN",
+    "referenceTranscript": "Anh ấy nhận được rất nhiều lời khen.",
+    "referenceTranslation": "彼は多くの称賛を得た。"
+  },
+  {
+    "id": "vi-tatoeba-048",
+    "language": "vi-VN",
+    "referenceTranscript": "Do uống quá nhiều rượu nên tôi bước đi không vững.",
+    "referenceTranslation": "酒を飲みすぎて足もとがふらついた。"
+  },
+  {
+    "id": "vi-tatoeba-049",
+    "language": "vi-VN",
+    "referenceTranscript": "Tom cao hơn tôi.",
+    "referenceTranslation": "トムは私より身長が高いです。"
+  },
+  {
+    "id": "vi-tatoeba-050",
+    "language": "vi-VN",
+    "referenceTranscript": "Hôm nay Tom nghỉ học.",
+    "referenceTranslation": "トムは今日学校を休んでいる。"
+  },
+  {
+    "id": "vi-tatoeba-051",
+    "language": "vi-VN",
+    "referenceTranscript": "Họ không bơi ở sông.",
+    "referenceTranslation": "彼らは川で泳いでません。"
+  },
+  {
+    "id": "vi-tatoeba-052",
+    "language": "vi-VN",
+    "referenceTranscript": "Một người bạn của Tom có bố làm phi hành gia vũ trụ.",
+    "referenceTranslation": "トムの友達には、父親が宇宙飛行士をしている人がいる。"
+  },
+  {
+    "id": "vi-tatoeba-053",
+    "language": "vi-VN",
+    "referenceTranscript": "Đây là cuốn sách mà bạn đang tìm đấy.",
+    "referenceTranslation": "君の探している本だよ。"
+  },
+  {
+    "id": "vi-tatoeba-054",
+    "language": "vi-VN",
+    "referenceTranscript": "Tất cả chúng tôi đều bị cúm, và giáo viên chúng tôi cũng vậy.",
+    "referenceTranslation": "私たちはみんな流感にかかり、先生もかかった。"
+  },
+  {
+    "id": "vi-tatoeba-055",
+    "language": "vi-VN",
+    "referenceTranscript": "Cô ấy ngồi xổm ở chỗ cánh cổng.",
+    "referenceTranslation": "彼女は門のところにしゃがみこんだ。"
+  },
+  {
+    "id": "vi-tatoeba-056",
+    "language": "vi-VN",
+    "referenceTranscript": "Điều tôi muốn biết là sự thật.",
+    "referenceTranslation": "私が知りたいのは事実だ。"
+  },
+  {
+    "id": "vi-tatoeba-057",
+    "language": "vi-VN",
+    "referenceTranscript": "Cháy! Mau chạy đi!",
+    "referenceTranslation": "火事だ！逃げろ！"
+  },
+  {
+    "id": "vi-tatoeba-058",
+    "language": "vi-VN",
+    "referenceTranscript": "Tom đang vẽ tranh.",
+    "referenceTranslation": "トムは絵を描いている。"
+  },
+  {
+    "id": "vi-tatoeba-059",
+    "language": "vi-VN",
+    "referenceTranscript": "Cái đồng hồ đeo tay này có giá tầm khoảng 50 nghìn Yên.",
+    "referenceTranslation": "この腕時計は５万円くらいする。"
+  },
+  {
+    "id": "vi-tatoeba-060",
+    "language": "vi-VN",
+    "referenceTranscript": "Chúng tôi bị nhồi nhét trong một căn phòng chật hẹp.",
+    "referenceTranslation": "われわれは狭い部屋に詰め込まれた。"
+  },
+  {
+    "id": "vi-tatoeba-061",
+    "language": "vi-VN",
+    "referenceTranscript": "Anh ấy phớt lờ lời khuyên của cô ấy.",
+    "referenceTranslation": "彼は彼女の助言を無視した。"
+  },
+  {
+    "id": "vi-tatoeba-062",
+    "language": "vi-VN",
+    "referenceTranscript": "Cô ấy ngưỡng mộ anh trai mình.",
+    "referenceTranslation": "彼女は兄に憧れている。"
+  },
+  {
+    "id": "vi-tatoeba-063",
+    "language": "vi-VN",
+    "referenceTranscript": "Anh ấy đứng nghiêng vào tường.",
+    "referenceTranslation": "彼は壁に寄りかかった。"
+  },
+  {
+    "id": "vi-tatoeba-064",
+    "language": "vi-VN",
+    "referenceTranscript": "Anh ấy đã đến nhà tôi, lấy cớ là để gặp tôi.",
+    "referenceTranslation": "彼は私に会うことを口実にして家に来た。"
+  },
+  {
+    "id": "vi-tatoeba-065",
+    "language": "vi-VN",
+    "referenceTranscript": "Bữa tiệc có vui không?",
+    "referenceTranslation": "パーティーは楽しかった？"
+  },
+  {
+    "id": "vi-tatoeba-066",
+    "language": "vi-VN",
+    "referenceTranscript": "Anh ấy trông có vẻ khỏe mạnh.",
+    "referenceTranslation": "彼は健康そうだ。"
+  },
+  {
+    "id": "vi-tatoeba-067",
+    "language": "vi-VN",
+    "referenceTranscript": "Bạn đang uống vào cốc của tôi đấy.",
+    "referenceTranslation": "あなた、私のカップから飲んでますよ。"
+  },
+  {
+    "id": "vi-tatoeba-068",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi có thể xem ảnh của Tom được không?",
+    "referenceTranslation": "トムの写真見てもいい？"
+  },
+  {
+    "id": "vi-tatoeba-069",
+    "language": "vi-VN",
+    "referenceTranscript": "Chúng ta giải quyết vấn đề này như thế nào?",
+    "referenceTranslation": "この問題をどうやって扱いましょうか。"
+  },
+  {
+    "id": "vi-tatoeba-070",
+    "language": "vi-VN",
+    "referenceTranscript": "Tom hơi thấp hơn tôi.",
+    "referenceTranslation": "トムは私よりほんのちょっと背が低い。"
+  },
+  {
+    "id": "vi-tatoeba-071",
+    "language": "vi-VN",
+    "referenceTranscript": "Cô ấy đã hỏi chúng tôi một vài câu hỏi.",
+    "referenceTranslation": "彼女は私たちにいくつか質問をした。"
+  },
+  {
+    "id": "vi-tatoeba-072",
+    "language": "vi-VN",
+    "referenceTranscript": "Nhờ lời khuyên của anh ấy mà tôi đã thành công.",
+    "referenceTranslation": "彼のアドバイスのおかげで、私は成功した。"
+  },
+  {
+    "id": "vi-tatoeba-073",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi sẽ gọi lại cho bạn sớm nhất có thể.",
+    "referenceTranslation": "すぐ掛けなおします。"
+  },
+  {
+    "id": "vi-tatoeba-074",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi lúc nào cũng căng thẳng trước lúc lên máy bay.",
+    "referenceTranslation": "飛行機に乗る前はいつも緊張する。"
+  },
+  {
+    "id": "vi-tatoeba-075",
+    "language": "vi-VN",
+    "referenceTranscript": "Bạn cần phải gắn kết lý thuyết với thực tế.",
+    "referenceTranslation": "理論と実際を結び付けるべきだ。"
+  },
+  {
+    "id": "vi-tatoeba-076",
+    "language": "vi-VN",
+    "referenceTranscript": "Thằng bé nào đã làm chuyện đó vậy?",
+    "referenceTranslation": "どっちの男の子がやったの？"
+  },
+  {
+    "id": "vi-tatoeba-077",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi đã trả cho anh ấy 5 Đô-la.",
+    "referenceTranslation": "私は彼に５ドルを支払った。"
+  },
+  {
+    "id": "vi-tatoeba-078",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi đã ngủ dậy muộn và bị muộn học.",
+    "referenceTranslation": "僕は寝坊して学校に遅刻した。"
+  },
+  {
+    "id": "vi-tatoeba-079",
+    "language": "vi-VN",
+    "referenceTranscript": "Đừng có mà nói với anh ấy.",
+    "referenceTranslation": "彼に教えるな。"
+  },
+  {
+    "id": "vi-tatoeba-080",
+    "language": "vi-VN",
+    "referenceTranscript": "Mẹ dậy tôi cách làm osechi.",
+    "referenceTranslation": "母が私におせちの作り方を教えてくれた。"
+  },
+  {
+    "id": "vi-tatoeba-081",
+    "language": "vi-VN",
+    "referenceTranscript": "Tom chắc chắn sẽ thắng.",
+    "referenceTranslation": "トムが勝つに決まってる。"
+  },
+  {
+    "id": "vi-tatoeba-082",
+    "language": "vi-VN",
+    "referenceTranscript": "Vào tháng Sáu, những ngày mưa kéo dài từ ngày này qua ngày khác.",
+    "referenceTranslation": "六月は来る日も来る日も雨が降る。"
+  },
+  {
+    "id": "vi-tatoeba-083",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi muốn kể về tình yêu của tôi.",
+    "referenceTranslation": "私の愛について語りたい。"
+  },
+  {
+    "id": "vi-tatoeba-084",
+    "language": "vi-VN",
+    "referenceTranscript": "Con ong đã bay vào hoa, rồi hút mật.",
+    "referenceTranslation": "蜂は花に飛んで、花蜜を飲んだ。"
+  },
+  {
+    "id": "vi-tatoeba-085",
+    "language": "vi-VN",
+    "referenceTranscript": "Bông hoa này thật đẹp!",
+    "referenceTranslation": "この花はなんてきれいなんだろう。"
+  },
+  {
+    "id": "vi-tatoeba-086",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi đã tưởng là tôi có thể thay đổi suy nghĩ của bạn.",
+    "referenceTranslation": "あなたの考えを変えることができると思っていました。"
+  },
+  {
+    "id": "vi-tatoeba-087",
+    "language": "vi-VN",
+    "referenceTranscript": "Tom không thích sữa.",
+    "referenceTranslation": "トムは牛乳が好きじゃない。"
+  },
+  {
+    "id": "vi-tatoeba-088",
+    "language": "vi-VN",
+    "referenceTranscript": "Cửa hàng này có bán thịt.",
+    "referenceTranslation": "この店では肉を売っている。"
+  },
+  {
+    "id": "vi-tatoeba-089",
+    "language": "vi-VN",
+    "referenceTranscript": "Cái laptop này nhẹ phết nhỉ.",
+    "referenceTranslation": "このノートパソコン軽いなぁ。"
+  },
+  {
+    "id": "vi-tatoeba-090",
+    "language": "vi-VN",
+    "referenceTranscript": "Giáo viên của chúng tôi chắc hẳn đã học tiếng Anh rất chăm chỉ khi ông còn là một học sinh cấp 3.",
+    "referenceTranslation": "私たちの先生は高校時代に英語を一生懸命勉強したに違いない。"
+  },
+  {
+    "id": "vi-tatoeba-091",
+    "language": "vi-VN",
+    "referenceTranscript": "Hãy bấm nút màu xanh lá cây. Nếu bạn làm vậy, đèn sẽ được bật sáng.",
+    "referenceTranslation": "緑のボタンを押して下さい、すると明かりがつきます。"
+  },
+  {
+    "id": "vi-tatoeba-092",
+    "language": "vi-VN",
+    "referenceTranscript": "Voi là một loài động vật to khổng lồ.",
+    "referenceTranslation": "象は巨大な動物である。"
+  },
+  {
+    "id": "vi-tatoeba-093",
+    "language": "vi-VN",
+    "referenceTranscript": "Máy tính của Tom đã bị nhiễm virus.",
+    "referenceTranslation": "トムのパソコンがウイルスに感染した。"
+  },
+  {
+    "id": "vi-tatoeba-094",
+    "language": "vi-VN",
+    "referenceTranscript": "Bạn nặng bao nhiêu cân?",
+    "referenceTranslation": "体重何キロ？"
+  },
+  {
+    "id": "vi-tatoeba-095",
+    "language": "vi-VN",
+    "referenceTranscript": "Vì bố mẹ tôi ly hôn rồi, nên tôi chỉ dành thời gian với bố tôi vào các ngày cuối tuần.",
+    "referenceTranslation": "私の両親は離婚してるので、隔週末だけお父さんと過ごします。"
+  },
+  {
+    "id": "vi-tatoeba-096",
+    "language": "vi-VN",
+    "referenceTranscript": "Đây có phải là một chuyện hiếm gặp không?",
+    "referenceTranslation": "これは珍しいことなの？"
+  },
+  {
+    "id": "vi-tatoeba-097",
+    "language": "vi-VN",
+    "referenceTranscript": "Anh ấy không muốn mặt mình xuất hiện trong video.",
+    "referenceTranslation": "彼は動画内で顔出ししたくない。"
+  },
+  {
+    "id": "vi-tatoeba-098",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi không thích quán đó.",
+    "referenceTranslation": "あの店はやだな。"
+  },
+  {
+    "id": "vi-tatoeba-099",
+    "language": "vi-VN",
+    "referenceTranscript": "Cô ấy nói là John chắc hẳn đã rất vui khi nghe tin đó.",
+    "referenceTranslation": "ジョンはその知らせを聞いて喜んでいるに違いない、と彼女は言った。"
+  },
+  {
+    "id": "vi-tatoeba-100",
+    "language": "vi-VN",
+    "referenceTranscript": "Trên thế giới có khoảng 6 tỷ người đang sinh sống.",
+    "referenceTranslation": "世界には約６０億の人々が暮らしている。"
+  }
+]
