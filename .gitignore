@@ -7,3 +7,5 @@ xcuserdata/
 Apps/iOS/Info.plist
 Apps/macOS/Info.plist
 .tatoeba-cache/
+.flores-cache/
+.mt-cache/
