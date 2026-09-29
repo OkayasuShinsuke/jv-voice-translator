@@ -1,0 +1,62 @@
+[
+  {
+    "id": "ja-shop-001",
+    "language": "ja-JP",
+    "referenceTranscript": "これを試着してもいいですか?もう少し小さいサイズはありますか?",
+    "referenceTranslation": "Tôi có thể thử cái này không? Có size nhỏ hơn một chút không?"
+  },
+  {
+    "id": "ja-shop-002",
+    "language": "ja-JP",
+    "referenceTranscript": "クレジットカードは使えますか?現金しかだめですか?",
+    "referenceTranslation": "Ở đây có nhận thẻ tín dụng không? Hay chỉ nhận tiền mặt thôi?"
+  },
+  {
+    "id": "ja-shop-003",
+    "language": "ja-JP",
+    "referenceTranscript": "これは高すぎます。もう少し安くしてもらえませんか?",
+    "referenceTranslation": "Cái này đắt quá. Bạn có thể giảm giá một chút được không?"
+  },
+  {
+    "id": "ja-shop-004",
+    "language": "ja-JP",
+    "referenceTranscript": "この商品を昨日買ったのですが、壊れていたので返品したいです。レシートはこちらです。",
+    "referenceTranslation": "Tôi đã mua sản phẩm này hôm qua, nhưng nó bị hỏng nên tôi muốn trả lại. Đây là hóa đơn."
+  },
+  {
+    "id": "ja-shop-005",
+    "language": "ja-JP",
+    "referenceTranscript": "袋は必要ありません。あと、贈り物なので包装してもらえますか?",
+    "referenceTranslation": "Tôi không cần túi. Với lại, đây là quà nên bạn có thể gói giúp tôi được không?"
+  },
+  {
+    "id": "vi-shop-001",
+    "language": "vi-VN",
+    "referenceTranscript": "Cho tôi hỏi, cái áo này có màu khác không?",
+    "referenceTranslation": "すみません、この服は他の色もありますか?"
+  },
+  {
+    "id": "vi-shop-002",
+    "language": "vi-VN",
+    "referenceTranscript": "Giá này đã bao gồm thuế chưa?",
+    "referenceTranslation": "この値段は税込みですか?"
+  },
+  {
+    "id": "vi-shop-003",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi muốn đổi cái này sang size lớn hơn, có được không?",
+    "referenceTranslation": "これをもう少し大きいサイズに交換したいのですが、できますか?"
+  },
+  {
+    "id": "vi-shop-004",
+    "language": "vi-VN",
+    "referenceTranscript": "Cửa hàng mở cửa đến mấy giờ vậy?",
+    "referenceTranslation": "このお店は何時まで開いていますか?"
+  },
+  {
+    "id": "vi-shop-005",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi trả bằng tiền mặt được không, hay phải quẹt thẻ?",
+    "referenceTranslation": "現金で払えますか?それともカードでしか払えませんか?"
+  }
+]
