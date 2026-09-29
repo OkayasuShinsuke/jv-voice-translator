@@ -121,8 +121,11 @@ struct ContentView: View {
     }
 
     /// 完成した吹き出しをタップしたときに、その訳を読み上げ直す。
+    ///
+    /// 聞き取り中は、パイプライン用の読み上げ係とタップ再生用の読み上げ係が別々に動いているため、
+    /// 同時に話すと声が二重に鳴ってしまう(issue #18)。安全のため、聞き取り中はタップ再生を無効にする。
     private func replay(_ message: ChatMessage) {
-        guard let translatedText = message.translatedText else { return }
+        guard !isListening, let translatedText = message.translatedText else { return }
         replaySynthesizer.profiles = VoiceSettingsStore().loadAll()
         Task {
             try? await replaySynthesizer.speak(
