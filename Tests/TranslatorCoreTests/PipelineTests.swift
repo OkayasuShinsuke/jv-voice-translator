@@ -131,6 +131,27 @@ final class PipelineTests: XCTestCase {
         XCTAssertEqual(events.items.first?.source.text, "こんにちは")
     }
 
+    func testRunCallsOnFailureWhenTranslationFailsInsteadOfSilentlyDroppingTheTranscript() async throws {
+        let synth = RecordingSynthesizer()
+        let recognizer = ScriptedRecognizer(events: [
+            (Transcript(text: "こんにちは", language: .japanese, isFinal: true), 0),
+        ])
+        let pipeline = TranslationPipeline(recognizer: recognizer, translator: FailingTranslator(), synthesizer: synth)
+        let events = EventCollector()
+        let failures = FailureCollector()
+        try await pipeline.run(
+            onEvent: { events.items.append($0) },
+            onFailure: { transcript, error in
+                failures.items.append((transcript, error))
+            })
+
+        // 失敗は黙って消えず、確定イベントは1件も発生しない。
+        XCTAssertTrue(events.items.isEmpty)
+        XCTAssertEqual(failures.items.count, 1)
+        XCTAssertEqual(failures.items.first?.0.text, "こんにちは")
+        XCTAssertTrue(failures.items.first?.1 is FailingTranslator.DummyError)
+    }
+
     func testPausableRecognizerIsPausedWhileHandlingAndResumedAfter() async throws {
         let synth = RecordingSynthesizer()
         let recognizer = PausableFakeRecognizer(events: [
@@ -159,6 +180,14 @@ struct FakeStreamingTranslator: StreamingTranslating {
             }
             continuation.finish()
         }
+    }
+}
+
+/// テスト用に、必ず失敗する偽物の翻訳器。
+struct FailingTranslator: Translating {
+    struct DummyError: Error, Equatable {}
+    func translate(_ text: String, from source: Language, to target: Language) async throws -> String {
+        throw DummyError()
     }
 }
 
@@ -195,6 +224,11 @@ struct ScriptedRecognizer: SpeechRecognizing {
 /// テストの中だけで使う、確定イベントを集めるための箱(TranscriptCollector と同じ理由で @unchecked Sendable)。
 final class EventCollector: @unchecked Sendable {
     var items: [TranslationEvent] = []
+}
+
+/// テストの中だけで使う、onFailure に渡された(手紙, エラー)の組を集めるための箱。
+final class FailureCollector: @unchecked Sendable {
+    var items: [(Transcript, Error)] = []
 }
 
 /// 一時停止・再開が呼ばれた順番を記録する、偽物の一時停止対応認識器。

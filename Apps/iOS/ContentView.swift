@@ -179,6 +179,12 @@ struct ContentView: View {
                 },
                 onEvent: { event in
                     Task { @MainActor in conversation.complete(with: event) }
+                },
+                onFailure: { transcript, error in
+                    // 翻訳や読み上げが途中で失敗したとき、吹き出しが「翻訳中…」のまま固まらないように
+                    // 「失敗」の見た目へ変える(以前はここが何も呼ばれず、黙って固まったままになっていた)。
+                    let message = error.localizedDescription
+                    Task { @MainActor in conversation.fail(message, transcript: transcript) }
                 })
         } catch {
             // 聞き取り中に何が起きたのか分からないまま黙って止まると不安にさせてしまうため、
