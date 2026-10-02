@@ -32,6 +32,17 @@ struct ChatBubble: View {
         .onTapGesture {
             if case .done = message.state { onTap() }
         }
+        // VoiceOver では、吹き出しの中のバラバラな Text をひとまとめにして1文で読み上げる。
+        // (そうしないと「元の言葉」「訳」が別々の要素として読み上げられ、聞き取りづらくなる)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(message.accessibilitySummary)
+        .accessibilityAddTraits(isTappable ? .isButton : [])
+    }
+
+    /// 完成した吹き出しはタップで読み上げ直せる(= ボタンとして扱う)。
+    private var isTappable: Bool {
+        if case .done = message.state { return true }
+        return false
     }
 
     /// 吹き出しの外側、LINEのように時刻や声・国旗を小さく出す列。
