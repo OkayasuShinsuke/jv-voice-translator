@@ -1,0 +1,62 @@
+[
+  {
+    "id": "ja-phone-001",
+    "language": "ja-JP",
+    "referenceTranscript": "もしもし、田中です。明日の予定について電話しました。",
+    "referenceTranslation": "A lô, tôi là Tanaka. Tôi gọi để trao đổi về lịch hẹn ngày mai."
+  },
+  {
+    "id": "ja-phone-002",
+    "language": "ja-JP",
+    "referenceTranscript": "すみません、急用ができたので、来週の会議を1時間遅らせてもらえますか?",
+    "referenceTranslation": "Xin lỗi, tôi có việc gấp nên bạn có thể dời cuộc họp tuần sau muộn hơn một tiếng được không?"
+  },
+  {
+    "id": "ja-phone-003",
+    "language": "ja-JP",
+    "referenceTranscript": "電波が悪いみたいです。もう一度、後でかけ直してもいいですか?",
+    "referenceTranslation": "Hình như sóng điện thoại không tốt. Lát nữa tôi gọi lại được không?"
+  },
+  {
+    "id": "ja-phone-004",
+    "language": "ja-JP",
+    "referenceTranscript": "予約の確認のお電話です。明後日の午後7時で間違いないですか?",
+    "referenceTranslation": "Tôi gọi để xác nhận đặt chỗ. Có đúng là 7 giờ tối ngày kia không ạ?"
+  },
+  {
+    "id": "ja-phone-005",
+    "language": "ja-JP",
+    "referenceTranscript": "申し訳ありませんが、体調が悪いので今日の約束をキャンセルさせてください。",
+    "referenceTranslation": "Xin lỗi, nhưng vì tôi không khỏe nên cho tôi hủy hẹn hôm nay."
+  },
+  {
+    "id": "vi-phone-001",
+    "language": "vi-VN",
+    "referenceTranscript": "A lô, cho tôi hỏi anh Yamada có ở đó không ạ?",
+    "referenceTranslation": "もしもし、山田さんはいらっしゃいますか?"
+  },
+  {
+    "id": "vi-phone-002",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi muốn đổi lịch hẹn sang thứ Sáu tuần này, có được không?",
+    "referenceTranslation": "予約を今週の金曜日に変更したいのですが、できますか?"
+  },
+  {
+    "id": "vi-phone-003",
+    "language": "vi-VN",
+    "referenceTranscript": "Xin lỗi, bạn có thể nói chậm lại một chút được không? Tôi nghe không rõ.",
+    "referenceTranslation": "すみません、もう少しゆっくり話していただけますか?よく聞こえません。"
+  },
+  {
+    "id": "vi-phone-004",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi gọi lại sau nhé, bây giờ tôi đang bận một chút.",
+    "referenceTranslation": "後でかけ直しますね、今ちょっと手が離せないので。"
+  },
+  {
+    "id": "vi-phone-005",
+    "language": "vi-VN",
+    "referenceTranscript": "Chuyến bay của tôi bị hoãn, nên tôi sẽ đến muộn khoảng một tiếng.",
+    "referenceTranslation": "飛行機が遅れているので、1時間くらい到着が遅くなります。"
+  }
+]
