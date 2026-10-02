@@ -1,0 +1,62 @@
+[
+  {
+    "id": "ja-emg-001",
+    "language": "ja-JP",
+    "referenceTranscript": "急にお腹が痛くなりました。近くに病院はありますか?",
+    "referenceTranslation": "Tôi bị đau bụng đột ngột. Gần đây có bệnh viện nào không?"
+  },
+  {
+    "id": "ja-emg-002",
+    "language": "ja-JP",
+    "referenceTranscript": "救急車を呼んでください、彼が倒れました。",
+    "referenceTranslation": "Xin hãy gọi xe cấp cứu, anh ấy đã ngã xuống."
+  },
+  {
+    "id": "ja-emg-003",
+    "language": "ja-JP",
+    "referenceTranscript": "この薬は1日3回、食後に飲んでください。",
+    "referenceTranslation": "Hãy uống thuốc này 3 lần một ngày, sau bữa ăn."
+  },
+  {
+    "id": "ja-emg-004",
+    "language": "ja-JP",
+    "referenceTranscript": "アレルギーがあるので、ピーナッツは食べられません。",
+    "referenceTranslation": "Tôi bị dị ứng nên không thể ăn đậu phộng."
+  },
+  {
+    "id": "ja-emg-005",
+    "language": "ja-JP",
+    "referenceTranscript": "パスポートを無くしてしまいました。どうすればいいですか?",
+    "referenceTranslation": "Tôi đã làm mất hộ chiếu rồi. Tôi nên làm gì bây giờ?"
+  },
+  {
+    "id": "vi-emg-001",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi bị sốt cao từ tối qua, xin hãy giúp tôi gọi bác sĩ.",
+    "referenceTranslation": "昨夜から高熱が出ています、お医者さんを呼んでください。"
+  },
+  {
+    "id": "vi-emg-002",
+    "language": "vi-VN",
+    "referenceTranscript": "Con tôi bị lạc ở ga tàu, chị có thấy một bé gái mặc áo đỏ không?",
+    "referenceTranslation": "子どもが駅ではぐれてしまいました、赤い服を着た女の子を見ませんでしたか?"
+  },
+  {
+    "id": "vi-emg-003",
+    "language": "vi-VN",
+    "referenceTranscript": "Xin lỗi, phòng cấp cứu ở tầng mấy ạ?",
+    "referenceTranslation": "すみません、救急外来は何階にありますか?"
+  },
+  {
+    "id": "vi-emg-004",
+    "language": "vi-VN",
+    "referenceTranscript": "Tôi không mang theo bảo hiểm y tế, khám bệnh sẽ tốn bao nhiêu tiền?",
+    "referenceTranslation": "健康保険証を持っていません、診察はいくらかかりますか?"
+  },
+  {
+    "id": "vi-emg-005",
+    "language": "vi-VN",
+    "referenceTranscript": "Xin vui lòng nói chậm hơn, tôi chưa hiểu rõ lắm.",
+    "referenceTranslation": "もう少しゆっくり話していただけますか、まだよく分かりません。"
+  }
+]
