@@ -42,6 +42,10 @@ struct ContentView: View {
     @State private var companion = CompanionStatus()
     /// 翻訳データ(日⇔越)が端末にダウンロード済みかどうかの報告。nil の間はまだ調べている最中。
     @State private var availability: LanguageAvailabilityReport?
+    /// マイク・音声認識の許可が無い、または聞き取り中にエラーが起きたときに出す案内(空文字なら非表示)。
+    @State private var recognitionErrorTitle = ""
+    @State private var recognitionErrorDetail = ""
+    @State private var showsRecognitionError = false
     @State private var jaToVi = TranslationSession.Configuration(
         source: Locale.Language(identifier: "ja"), target: Locale.Language(identifier: "vi"))
     @State private var viToJa = TranslationSession.Configuration(
@@ -69,6 +73,11 @@ struct ContentView: View {
                 }
             }
             .sheet(isPresented: $showsVoiceSettings) { VoiceSettingsView() }
+            .alert(recognitionErrorTitle, isPresented: $showsRecognitionError) {
+                Button("OK") {}
+            } message: {
+                Text(recognitionErrorDetail)
+            }
         }
         .task { companion.start() }
         .task { availability = await LanguageAvailabilityReport.check(using: AppleLanguageAvailabilityChecker()) }
@@ -139,7 +148,12 @@ struct ContentView: View {
             isListening = false
             return
         }
-        guard await AppleSpeechRecognizer.requestAuthorization() else { return }
+        guard await AppleSpeechRecognizer.requestAuthorization() else {
+            // 許可が無いままだと何も起こらず、利用者が「押したのに動かない」と困ってしまうため、
+            // 「設定アプリでオンにしてください」という案内を出す。
+            showRecognitionError(SpeechRecognitionError.notAuthorized)
+            return
+        }
         conversation.clear()
         let recognizer = makeRecognizer(for: mode)
         let pipeline = TranslationPipeline(
@@ -148,24 +162,42 @@ struct ContentView: View {
             synthesizer: AppleSpeechSynthesizer(profiles: VoiceSettingsStore().loadAll()))
         self.pipeline = pipeline
         isListening = true
-        try? await pipeline.run(
-            onTranscript: { transcript in
-                Task { @MainActor in
-                    if transcript.isFinal {
-                        conversation.finalize(transcript)
-                    } else {
-                        conversation.updatePartial(transcript)
+        do {
+            try await pipeline.run(
+                onTranscript: { transcript in
+                    Task { @MainActor in
+                        if transcript.isFinal {
+                            conversation.finalize(transcript)
+                        } else {
+                            conversation.updatePartial(transcript)
+                        }
                     }
-                }
-            },
-            onTranslationChunk: { chunkSoFar in
-                // 1文目の翻訳ができた時点で、吹き出しの訳の部分をその場で書き換える。
-                Task { @MainActor in conversation.updateTranslationProgress(chunkSoFar) }
-            },
-            onEvent: { event in
-                Task { @MainActor in conversation.complete(with: event) }
-            })
+                },
+                onTranslationChunk: { chunkSoFar in
+                    // 1文目の翻訳ができた時点で、吹き出しの訳の部分をその場で書き換える。
+                    Task { @MainActor in conversation.updateTranslationProgress(chunkSoFar) }
+                },
+                onEvent: { event in
+                    Task { @MainActor in conversation.complete(with: event) }
+                })
+        } catch {
+            // 聞き取り中に何が起きたのか分からないまま黙って止まると不安にさせてしまうため、
+            // 分かりやすい日本語で理由を伝える。
+            showRecognitionError(error)
+        }
         isListening = false
+    }
+
+    /// エラーの中身を、アラートにそのまま出せる日本語の2行(タイトル・詳しい説明)に変換して表示する。
+    private func showRecognitionError(_ error: Error) {
+        if let localized = error as? LocalizedError {
+            recognitionErrorTitle = localized.errorDescription ?? "聞き取りでエラーが起きました"
+            recognitionErrorDetail = localized.recoverySuggestion ?? "もう一度お試しください。"
+        } else {
+            recognitionErrorTitle = "聞き取りでエラーが起きました"
+            recognitionErrorDetail = "もう一度お試しください。"
+        }
+        showsRecognitionError = true
     }
 
     /// 選んだモードに応じて、聞き取り役(自動判定 or 固定言語)を作る。
