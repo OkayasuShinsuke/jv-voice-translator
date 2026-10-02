@@ -32,8 +32,15 @@ func run() async -> Int32 {
         print(registry.names.joined(separator: "\n"))
         return 0
     }
-    guard let translator = registry.make(options.translatorName) else {
-        printError("エラー: 翻訳エンジン \"\(options.translatorName)\" はありません。使えるもの: \(registry.names.joined(separator: ", "))")
+    let translator: Translating
+    do {
+        guard let made = try registry.makeTranslator(named: options.translatorName) else {
+            printError("エラー: 翻訳エンジン \"\(options.translatorName)\" はありません。使えるもの: \(registry.names.joined(separator: ", ")), \(TranslatorRegistry.filePrefix)<訳文ファイル.json>")
+            return 2
+        }
+        translator = made
+    } catch {
+        printError("エラー: 訳文ファイルを読めませんでした: \(error)")
         return 2
     }
 
@@ -43,6 +50,9 @@ func run() async -> Int32 {
         var notes = ["評価データ: `\(options.datasetPath)`(\(samples.count) 件)"]
         if options.translatorName == "identity" {
             notes.append("identity は入力をそのまま返す基準用のエンジンです。chrF がほぼ 0 になるのが正常です。")
+        }
+        if options.translatorName.hasPrefix(TranslatorRegistry.filePrefix) {
+            notes.append("訳文は事前に別の場所で作ったものです。ここでの遅延はファイルを引く時間なので、翻訳の速さの目安にはなりません。")
         }
         let markdown = MarkdownReportGenerator().render(
             translation: report, translatorName: options.translatorName, notes: notes)

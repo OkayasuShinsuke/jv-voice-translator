@@ -28,6 +28,7 @@ public struct EvalOptions: Equatable {
       --dataset      評価データの場所(既定: Evaluation/datasets)
       --out          レポートの出力先(既定: eval-report.md)
       --translator   使う翻訳エンジンの名前(既定: identity)
+                     file:<訳文.json> と書くと、先に訳しておいた訳文ファイルを採点する
       --list-translators  使える翻訳エンジンの名前を表示
       -h, --help     この説明を表示
     """

@@ -1,0 +1,70 @@
+# 無料の翻訳モデル(NLLB-200)で評価データを訳し、アプリと同じ物差し(chrF)で採点する。
+#
+#   ① Linux で Python の翻訳モデルが「答案」(訳文 JSON)を書く
+#   ② Mac で Swift の jv-eval が答案を採点してレポートにする
+#
+# アプリ本番の Apple 翻訳は GitHub の Mac では動かせないので、まずはこの点数を
+# 「無料モデルならこれくらい」という基準点(ベースライン)として毎週記録する。
+name: MT baseline
+
+on:
+  workflow_dispatch:        # GitHub の Actions 画面から手動でも動かせる
+  schedule:
+    - cron: "0 18 * * 0"    # 毎週月曜 03:00(日本時間)
+  push:
+    paths:                  # 評価データや採点の仕組みが変わったときだけ動かす(時間がかかるため)
+      - "Evaluation/**"
+      - "Sources/Evaluation/**"
+      - "Sources/jv-eval/**"
+      - ".github/workflows/mt-baseline.yml"
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      MODEL: facebook/nllb-200-distilled-600M
+      HF_HOME: ${{ github.workspace }}/.mt-cache
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: Evaluation/scripts/requirements-mt.txt
+      - name: 翻訳モデルを前回の保存から取り出す(約 2.5GB のダウンロードを省く)
+        uses: actions/cache@v4
+        with:
+          path: .mt-cache
+          key: hf-${{ env.MODEL }}
+      - name: ライブラリを入れる
+        run: python -m pip install -r Evaluation/scripts/requirements-mt.txt
+      - name: 評価データを翻訳モデルで訳す
+        run: python Evaluation/scripts/translate_with_model.py --model "$MODEL" --out mt-hypotheses.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mt-hypotheses
+          path: mt-hypotheses.json
+
+  score:
+    needs: translate
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: mt-hypotheses
+      - name: いちばん新しい Xcode を選ぶ
+        run: |
+          XCODE=$(ls -d /Applications/Xcode_*.app | sort -V | tail -1)
+          sudo xcode-select -s "$XCODE"
+      - name: 訳文を採点してレポートを作る
+        run: |
+          swift run jv-eval --dataset Evaluation/datasets --out mt-report.md --translator file:mt-hypotheses.json
+          cat mt-report.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mt-report
+          path: |
+            mt-report.md
+            mt-hypotheses.json

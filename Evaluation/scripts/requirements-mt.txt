@@ -1,0 +1,6 @@
+# translate_with_model.py で使うライブラリ(CI の「翻訳モデルのベースライン評価」用)
+# torch は CPU 版で十分(GitHub の Linux 実行環境には GPU が無い)
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch>=2.3
+transformers>=4.44,<5
+sentencepiece>=0.2

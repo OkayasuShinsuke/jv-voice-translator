@@ -25,8 +25,8 @@ Sources/
 Tests/                   自動テスト
 Apps/iOS/                iPhone アプリ本体(画面)
 Apps/macOS/              Mac コンパニオンアプリ
-Evaluation/datasets/     評価用の例文データ(tatoeba.json は Tatoeba 由来、出典は tatoeba_ATTRIBUTION.md)
-Evaluation/scripts/      評価データを作るスクリプト(import_tatoeba.py)
+Evaluation/datasets/     評価用の例文データ(tatoeba.json は Tatoeba、flores.json は FLORES-200 由来。出典は *_ATTRIBUTION.md)
+Evaluation/scripts/      評価データを作る・訳すスクリプト(import_tatoeba.py, import_flores.py, translate_with_model.py)
 project.yml              Xcode プロジェクトの設計図(XcodeGen 用)
 docs/                    設計・開発の進め方
 ```
@@ -41,6 +41,16 @@ open JVTranslator.xcodeproj
 ```
 
 Xcode で `JVTranslator` を選び、実機の iPhone を選んで ▶︎ を押します(Signing で自分の Apple ID のチームを選択)。
+
+## 翻訳の点数を測る(ワークストリーム④)
+
+```bash
+swift run jv-eval --translator identity                         # 物差しの動作確認(点数はほぼ 0 が正常)
+swift run jv-eval --translator file:mt-hypotheses.json          # 先に訳しておいた訳文ファイルを採点
+```
+
+GitHub Actions の「MT baseline」が毎週、無料の翻訳モデル NLLB-200 で評価データを訳して採点し、
+レポート(`mt-report`)を保存します。アプリの訳文も同じ形の JSON にすれば同じ方法で比べられます。
 
 ## ドキュメント
 
