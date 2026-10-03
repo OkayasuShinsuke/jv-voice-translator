@@ -179,6 +179,13 @@ struct ContentView: View {
                 },
                 onEvent: { event in
                     Task { @MainActor in conversation.complete(with: event) }
+                },
+                onError: { transcript, error in
+                    // 1文の翻訳・読み上げだけが失敗したときは、聞き取り全体は止めずに
+                    // その吹き出しだけ「失敗」の見た目に変える(アラートで聞き取りを中断させない)。
+                    Task { @MainActor in
+                        conversation.fail(Self.failureMessage(for: error), transcript: transcript)
+                    }
                 })
         } catch {
             // 聞き取り中に何が起きたのか分からないまま黙って止まると不安にさせてしまうため、
@@ -198,6 +205,14 @@ struct ContentView: View {
             recognitionErrorDetail = "もう一度お試しください。"
         }
         showsRecognitionError = true
+    }
+
+    /// エラーの中身を、吹き出しにそのまま出せる短い日本語の1行に変換する。
+    private static func failureMessage(for error: Error) -> String {
+        if let localized = error as? LocalizedError, let description = localized.errorDescription {
+            return description
+        }
+        return "訳せませんでした。もう一度お試しください。"
     }
 
     /// 選んだモードに応じて、聞き取り役(自動判定 or 固定言語)を作る。
