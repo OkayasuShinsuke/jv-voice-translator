@@ -131,6 +131,28 @@ final class PipelineTests: XCTestCase {
         XCTAssertEqual(events.items.first?.source.text, "こんにちは")
     }
 
+    func testRunReportsErrorsInsteadOfSwallowingThem() async throws {
+        let synth = RecordingSynthesizer()
+        let recognizer = ScriptedRecognizer(events: [
+            (Transcript(text: "こんにちは", language: .japanese, isFinal: true), 0),
+        ])
+        let pipeline = TranslationPipeline(recognizer: recognizer, translator: FailingTranslator(), synthesizer: synth)
+        let errors = ErrorCollector()
+        let events = EventCollector()
+        // 以前は `try?` でエラーを握りつぶしていたため、ここで onError が1度も呼ばれず、
+        // 画面側は吹き出しが「翻訳中…」のまま固まっても気づけなかった。
+        try await pipeline.run(
+            onEvent: { events.items.append($0) },
+            onError: { transcript, error in
+                errors.items.append((transcript.text, error))
+            })
+
+        XCTAssertTrue(events.items.isEmpty)
+        XCTAssertEqual(errors.items.count, 1)
+        XCTAssertEqual(errors.items.first?.0, "こんにちは")
+        XCTAssertTrue(errors.items.first?.1 is FailingTranslator.Failure)
+    }
+
     func testPausableRecognizerIsPausedWhileHandlingAndResumedAfter() async throws {
         let synth = RecordingSynthesizer()
         let recognizer = PausableFakeRecognizer(events: [
@@ -160,6 +182,19 @@ struct FakeStreamingTranslator: StreamingTranslating {
             continuation.finish()
         }
     }
+}
+
+/// 必ず失敗する偽物の翻訳器。onError がちゃんと呼ばれることを確かめるテスト専用。
+struct FailingTranslator: Translating {
+    struct Failure: Error, Equatable {}
+    func translate(_ text: String, from source: Language, to target: Language) async throws -> String {
+        throw Failure()
+    }
+}
+
+/// テストの中だけで使う、onError に渡された (文, エラー) の組を集めるための箱。
+final class ErrorCollector: @unchecked Sendable {
+    var items: [(String, Error)] = []
 }
 
 /// 訳すのにわざと時間がかかる偽物の翻訳器。echo(自分の声の拾い直し)を再現するテスト専用。

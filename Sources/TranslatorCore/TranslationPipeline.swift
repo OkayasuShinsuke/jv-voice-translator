@@ -98,16 +98,23 @@ public actor TranslationPipeline {
     ///     画面に「今しゃべっている途中の文字」をリアルタイムに出したいとき(UI用)に使う。
     ///   - onTranslationChunk: 確定した文の翻訳が進むたびに、その時点までの訳文を渡す。1文目ができた時点で呼ばれる。
     ///   - onEvent: 翻訳(と読み上げ)が終わった確定文ごとに呼ばれる。
+    ///   - onError: 翻訳または読み上げが失敗したときに、原因のエラーと元の確定文とともに呼ばれる。
+    ///     呼ばれなければ画面側は何も気づけず、吹き出しが「翻訳中…」のまま固まって見える。
     ///
     /// たとえ話:マイクが拾った音は次々に手紙(transcript)として届くが、1通処理している間に届いた
     /// 手紙(自分の声が返ってきたものなど)はその場で捨てたい。もし手紙を受け取る係が1通処理し終わる
     /// まで次の手紙を受け取れないとしたら、処理が終わった瞬間にはもう「処理中フラグ」が下りているので
     /// 結局その手紙も読んでしまう。それを防ぐため、1通ごとの処理(`handle`)は裏の作業として並行に
     /// 走らせ、受け取る係(このループ)はマイクの手紙受け取りに専念する。
+    ///
+    /// たとえ話(エラー):郵便配達中に1通の手紙が壊れて届かなくても、配達員はだまって次の手紙を
+    /// 配り続けてはいけない。「この手紙は届きませんでした」と受取人(画面)に一言伝えて初めて、
+    /// 受取人は「あ、さっきの話、訳せなかったんだ」と気づける。
     public func run(
         onTranscript: @escaping @Sendable (Transcript) -> Void = { _ in },
         onTranslationChunk: @escaping @Sendable (String) -> Void = { _ in },
-        onEvent: @escaping @Sendable (TranslationEvent) -> Void = { _ in }
+        onEvent: @escaping @Sendable (TranslationEvent) -> Void = { _ in },
+        onError: @escaping @Sendable (Transcript, Error) -> Void = { _, _ in }
     ) async throws {
         // 認識器が一時停止に対応していれば、読み上げ中は実際にマイクの聞き取りを止める。
         // 対応していなければ nil のままで、これまでどおり isHandling フラグでの無視だけになる。
@@ -122,8 +129,14 @@ public actor TranslationPipeline {
             isHandling = true
             await pausable?.pause()
             pendingHandling.append(Task {
-                if let event = try? await self.handle(transcript, onChunk: onTranslationChunk) {
-                    onEvent(event)
+                do {
+                    if let event = try await self.handle(transcript, onChunk: onTranslationChunk) {
+                        onEvent(event)
+                    }
+                } catch {
+                    // 以前はここを `try?` で握りつぶしていたため、翻訳や読み上げが失敗しても
+                    // 画面側は永遠に気づけず、吹き出しが「翻訳中…」のまま固まっていた。
+                    onError(transcript, error)
                 }
                 await self.finishHandling(pausable)
             })
