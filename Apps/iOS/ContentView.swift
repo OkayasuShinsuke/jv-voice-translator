@@ -113,13 +113,7 @@ struct ContentView: View {
                     // 聞き取り中は、赤い輪がふわっと広がって消える「脈打つ」ような合図を出す。
                     .overlay {
                         if isListening {
-                            Circle()
-                                .stroke(Color.red.opacity(0.6), lineWidth: 3)
-                                .scaleEffect(isListening ? 1.4 : 1.0)
-                                .opacity(isListening ? 0 : 1)
-                                .animation(
-                                    .easeOut(duration: 1.0).repeatForever(autoreverses: false),
-                                    value: isListening)
+                            PulsingRing()
                         }
                     }
             }
@@ -210,6 +204,34 @@ struct ContentView: View {
         case .vietnamese:
             return LanguageLockedRecognizer(base: AppleSpeechRecognizer(), language: .vietnamese)
         }
+    }
+}
+
+/// マイクボタンの上に出す、赤い輪が外へふわっと広がって消える「脈打つ」合図。
+///
+/// たとえ話:水面に石を落としたときに広がっていく波紋のように、輪が広がりながら薄くなって消える。
+/// これを毎回繰り返すことで「今、聞いていますよ」と伝える。
+///
+/// 気をつけたこと(以前のバグ):この輪は「聞き取り中(isListening)」の間だけ画面に出てくるが、
+/// 広がる・消えるという見た目の変化(アニメーション)は `isListening` が「変わった」ときにしか起きない。
+/// ところが、この輪が画面に現れた時点ではもう `isListening` は true になった後なので、
+/// 現れてから一度も「変わらない」→ アニメーションが一度も動かず、輪は透明(opacity 0)のまま
+/// 固まって見えなくなってしまっていた。そこで、輪自身が持つ `isExpanded` という
+/// 別の「見た目用のスイッチ」を用意し、輪が現れた直後(`onAppear`)に false → true と
+/// 切り替えることで、確実にアニメーションの「変化」を起こすようにしている。
+struct PulsingRing: View {
+    @State private var isExpanded = false
+
+    var body: some View {
+        Circle()
+            .stroke(Color.red.opacity(0.6), lineWidth: 3)
+            .scaleEffect(isExpanded ? 1.4 : 1.0)
+            .opacity(isExpanded ? 0 : 1)
+            .onAppear {
+                withAnimation(.easeOut(duration: 1.0).repeatForever(autoreverses: false)) {
+                    isExpanded = true
+                }
+            }
     }
 }
 
