@@ -37,4 +37,19 @@ final class SentenceSplitterEdgeCaseTests: XCTestCase {
             SentenceSplitter.split("身長は1.75で体重は68.2です。"),
             ["身長は1.75で体重は68.2です。"])
     }
+
+    func testSplitsOnFullWidthExclamationMark() {
+        // 日本語の IME だと「!」は全角で入力されることが多い。これまでは半角の "!" しか
+        // 区切り記号に入っていなかったので、全角の「!」では区切られず、
+        // 文全体が1つの長い文として扱われてしまっていた。
+        XCTAssertEqual(
+            SentenceSplitter.split("すごい！元気ですね！"),
+            ["すごい！", "元気ですね！"])
+    }
+
+    func testSplitsOnFullWidthQuestionMark() {
+        XCTAssertEqual(
+            SentenceSplitter.split("元気ですか？明日も会えますか？"),
+            ["元気ですか？", "明日も会えますか？"])
+    }
 }
