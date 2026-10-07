@@ -37,4 +37,13 @@ final class SentenceSplitterEdgeCaseTests: XCTestCase {
             SentenceSplitter.split("身長は1.75で体重は68.2です。"),
             ["身長は1.75で体重は68.2です。"])
     }
+
+    func testKeepsFullWidthClosingParenthesisWithItsSentence() {
+        // 修正前は trailingClosers に半角 ")" が重複登録されていて、全角の "）" が
+        // 区切り記号として覚えられていなかった。そのため「（補足。）」のような日本語の
+        // 注釈では "）" だけが次の文の先頭に取り残されていた(例: "）次へ進もう。")。
+        XCTAssertEqual(
+            SentenceSplitter.split("注釈です(補足。）次へ進もう。"),
+            ["注釈です(補足。）", "次へ進もう。"])
+    }
 }

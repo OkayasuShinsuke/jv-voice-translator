@@ -10,9 +10,12 @@ public enum SentenceSplitter {
     ///   バラバラに訳されてしまう。数字と数字の間の "." だけは特別に無視する。
     /// - 区切り記号のすぐ後に閉じカッコ・閉じ引用符(」』"'）))が続く場合は、そこまで前の文に含める。
     ///   たとえ話:「彼は「はい。」と言った」のような文で、"。" のすぐ後の "」" を置き去りにしない。
+    ///   半角の ")" だけでなく、日本語の文でよく使う全角の "）" も同じ扱いにする。
+    ///   たとえ話:半角 ")" しか覚えていないと、全角の「（補足。）」のような注釈の
+    ///   "）" が置き去りにされ、次の文の先頭にポツンと残ってしまう。
     public static func split(_ text: String) -> [String] {
         let terminators: Set<Character> = ["。", "!", "?", "!", "?", ".", "\n"]
-        let trailingClosers: Set<Character> = ["」", "』", "”", "\"", "'", "’", ")", ")"]
+        let trailingClosers: Set<Character> = ["」", "』", "”", "\"", "'", "’", ")", "）"]
         let characters = Array(text)
         var sentences: [String] = []
         var current = ""
